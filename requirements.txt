@@ -16,3 +16,4 @@ python-dotenv
 pytest
 httpx
 PyJWT
+pwdlib[argon2]
