@@ -249,3 +249,6 @@ Thumbs.db
 # Frontend dependencies and build
 frontend/node_modules/
 frontend/dist/
+# RetailPulse backend runtime data
+!ml/data/forecast_7day_backtest.csv
+!ml/data/inventory_analysis.csv

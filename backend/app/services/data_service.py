@@ -6,7 +6,6 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[3]
 
 DATA_FILES = {
-    "sales": ROOT / "ml/data/processed_sales.csv",
     "forecasts": ROOT / "ml/data/forecast_7day_backtest.csv",
     "inventory": ROOT / "ml/data/inventory_analysis.csv",
     "transfers": ROOT / "optimization/transfer_recommendations.csv",

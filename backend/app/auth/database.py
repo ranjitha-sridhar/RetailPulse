@@ -1,11 +1,17 @@
-
+import os
 import sqlite3
 from pathlib import Path
 from contextlib import contextmanager
 
 # Store the authentication database inside backend/app/database
 APP_DIR = Path(__file__).resolve().parents[1]
-DATABASE_PATH = APP_DIR / "database" / "users.db"
+
+DATABASE_PATH = Path(
+    os.getenv(
+        "DATABASE_PATH",
+        str(APP_DIR / "database" / "users.db")
+    )
+)
 
 DATABASE_PATH.parent.mkdir(parents=True, exist_ok=True)
 
