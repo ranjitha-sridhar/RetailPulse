@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react'
 import {
   LayoutDashboard, TrendingUp, Package, Truck, SlidersHorizontal,
-  Bell, Search, RefreshCw, AlertTriangle, ArrowUpRight,
-  ArrowDownRight, Store, Boxes, Activity, CalendarDays,LogOut
+  Bell, RefreshCw, AlertTriangle, ArrowUpRight, Search, 
+ArrowDownRight, Store, Boxes, Activity, CalendarDays, LogOut, Users
 } from 'lucide-react'
 
 import {
@@ -20,6 +20,7 @@ import Forecasting from './components/Forecasting'
 import Inventory from './components/Inventory'
 import Transfers from './components/Transfers'
 import WhatIf from './components/WhatIf'
+import UserManagement from './components/UserManagement'
 
 const navigation = [
   { label: 'Overview', icon: LayoutDashboard },
@@ -27,6 +28,7 @@ const navigation = [
   { label: 'Inventory Intelligence', icon: Package },
   { label: 'Store Transfers', icon: Truck },
   { label: 'What-if Simulator', icon: SlidersHorizontal },
+  { label: 'User Management', icon: Users },
 ]
 
 function MetricCard({ title, value, subtitle, icon: Icon, color }) {
@@ -159,7 +161,9 @@ if (!user) {
 
         <div className="nav-label">WORKSPACE</div>
         <nav className="navigation">
-          {navigation.map(({ label, icon: Icon }) => (
+          {navigation
+            .filter(({ label }) => label !== 'User Management' || user.role === 'admin')
+            .map(({ label, icon: Icon }) => (
             <button
               key={label}
               className={`nav-item ${activePage === label ? 'active' : ''}`}
@@ -232,6 +236,7 @@ if (!user) {
               </div>
             </div>
           ) : activePage === 'Demand Forecasting' ? (<Forecasting />
+          ) : activePage === 'User Management' ? (<UserManagement />
           ) : activePage === 'Inventory Intelligence' ? (<Inventory />
           ) : activePage === 'Store Transfers' ? (<Transfers />
           ) : activePage === 'What-if Simulator' ? (<WhatIf />

@@ -558,3 +558,38 @@ td strong { color: #343944; }
     grid-template-columns: 1fr;
   }
 }
+
+/* Login portal selection */
+.portal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.portal-options .login-button {
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.portal-options .login-button svg:last-child {
+  margin-left: auto;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 18px;
+  padding: 5px 0;
+}
+
+.back-button:hover {
+  color: #CC0000;
+}

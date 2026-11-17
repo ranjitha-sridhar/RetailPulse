@@ -37,4 +37,7 @@ export const getRecommendations = () =>
 export const getProductForecast = (storeId, productId) =>
   api.get(`/forecast/${storeId}/${productId}`)
 
+export const registerUser = (userData) =>
+  api.post('/auth/register', userData)
+
 export default api
