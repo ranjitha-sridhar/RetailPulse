@@ -21,8 +21,6 @@ df["date"] = pd.to_datetime(df["date"])
 
 # Features used by the model
 features = [
-    "sell_price",
-    "is_available",
     "lag_1",
     "lag_7",
     "lag_14",

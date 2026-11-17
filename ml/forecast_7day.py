@@ -74,25 +74,22 @@ for (store, item), group in df.groupby(group_cols):
 
         # Construct features from history available so far
         feature_row = {
-            "sell_price": float(row["sell_price"]),
-            "is_available": int(row["is_available"]),
+        "lag_1": history[-1],
+        "lag_7": history[-7],
+        "lag_14": history[-14],
+        "lag_28": history[-28],
 
-            "lag_1": history[-1],
-            "lag_7": history[-7],
-            "lag_14": history[-14],
-            "lag_28": history[-28],
+        "rolling_mean_7": np.mean(history[-7:]),
+        "rolling_mean_28": np.mean(history[-28:]),
+        "rolling_std_7": np.std(history[-7:], ddof=1),
 
-            "rolling_mean_7": np.mean(history[-7:]),
-            "rolling_mean_28": np.mean(history[-28:]),
-            "rolling_std_7": np.std(history[-7:], ddof=1),
-
-            "day_of_week": row["date"].dayofweek,
-            "month": row["date"].month,
-            "day_of_month": row["date"].day,
-            "is_weekend": int(row["date"].dayofweek in [5, 6]),
-            "is_event": int(
-                pd.notna(row["event_name_1"])
-                and str(row["event_name_1"]) != "None"
+        "day_of_week": row["date"].dayofweek,
+        "month": row["date"].month,
+        "day_of_month": row["date"].day,
+        "is_weekend": int(row["date"].dayofweek in [5, 6]),
+        "is_event": int(
+            pd.notna(row["event_name_1"])
+            and str(row["event_name_1"]) != "None"
             )
         }
 
@@ -104,11 +101,6 @@ for (store, item), group in df.groupby(group_cols):
 
         # Seasonal-naive prediction: same weekday last week
         seasonal_prediction = history[-7]
-
-        # An unavailable product cannot generate sales
-        if feature_row["is_available"] == 0:
-            prediction = 0.0
-            seasonal_prediction = 0.0
 
         actual = float(row["units_sold"])
 

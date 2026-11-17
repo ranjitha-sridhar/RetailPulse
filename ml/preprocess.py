@@ -106,3 +106,60 @@ print(data[[
 ]].head())
 
 print("\nPreprocessing completed!")
+print("\n========== DATA QUALITY CHECK ==========")
+
+# 1. Check duplicate store-product-date records
+duplicates = data.duplicated(
+    subset=["store_id", "item_id", "date"]
+).sum()
+
+print("Duplicate records:", duplicates)
+
+# 2. Check records per store-product combination
+group_sizes = data.groupby(
+    ["store_id", "item_id"]
+).size()
+
+print("\nRecords per product-store combination:")
+print(group_sizes.describe())
+
+# 3. Check unavailable products with positive sales
+unavailable_sales = data[
+    (data["is_available"] == 0) &
+    (data["units_sold"] > 0)
+]
+
+print(
+    "\nUnavailable records with positive sales:",
+    len(unavailable_sales)
+)
+
+# 4. Check unavailable records with zero sales
+unavailable_zero_sales = data[
+    (data["is_available"] == 0) &
+    (data["units_sold"] == 0)
+]
+
+print(
+    "Unavailable records with zero sales:",
+    len(unavailable_zero_sales)
+)
+
+# 5. Check missing values
+print("\nMissing values:")
+print(data[[
+    "units_sold",
+    "sell_price",
+    "is_available",
+    "event_name_1"
+]].isna().sum())
+
+# 6. Check date continuity
+date_counts = data.groupby(
+    ["store_id", "item_id"]
+)["date"].nunique()
+
+print("\nUnique dates per product-store combination:")
+print(date_counts.describe())
+
+print("\n========== CHECK COMPLETED ==========")
