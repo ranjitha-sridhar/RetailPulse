@@ -15,3 +15,4 @@ joblib
 python-dotenv
 pytest
 httpx
+PyJWT
