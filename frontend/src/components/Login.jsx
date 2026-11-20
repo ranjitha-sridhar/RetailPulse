@@ -174,31 +174,6 @@ export default function Login({ onLogin }) {
               <p style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', marginTop: '4px' }}>
                 Enter your credentials to access your retail operations workspace.
               </p>
-              <div style={{ marginTop: '10px' }}>
-                <button
-                  type="button"
-                  style={{
-                    background: 'var(--color-bg-secondary)',
-                    border: '1px dashed var(--color-border)',
-                    borderRadius: 'var(--radius-sm)',
-                    padding: '6px 12px',
-                    fontSize: '11px',
-                    color: 'var(--color-text-secondary)',
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => {
-                    if (selectedRole === 'admin') {
-                      setUsername('Admin')
-                      setPassword('Admin@123456')
-                    } else {
-                      setUsername('StoreManager')
-                      setPassword('Manager@1234')
-                    }
-                  }}
-                >
-                  ⚡ Autofill Demo {selectedRole === 'admin' ? 'Admin' : 'Manager'} Credentials
-                </button>
-              </div>
             </div>
 
             <form onSubmit={handleSubmit}>
