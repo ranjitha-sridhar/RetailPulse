@@ -1,4 +1,3 @@
-
 from pathlib import Path
 import pandas as pd
 
@@ -15,7 +14,7 @@ STORE_SUMMARY_FILE = ROOT / "optimization" / "store_transfer_summary.csv"
 inventory = pd.read_csv(INVENTORY_FILE, low_memory=False)
 transfers = pd.read_csv(TRANSFER_FILE)
 
-# Recalculate the same capacities used by the optimizer
+# Recalculate safe surplus and transfer need
 inventory["safe_surplus"] = (
     inventory["on_hand_stock"]
     - inventory["lead_time_demand"]
@@ -70,15 +69,18 @@ result["external_replenishment"] = (
     result["transfer_need"] - result["incoming_units"]
 ).clip(lower=0)
 
-# Validation checks
+# Validation checks:
+# 1. Donor cannot transfer more than its safe surplus
 result["donor_safe"] = (
     result["outgoing_units"] <= result["safe_surplus"]
 )
 
+# 2. Recipient cannot receive more than its replenishment requirement
 result["recipient_not_overfilled"] = (
     result["incoming_units"] <= result["transfer_need"]
 )
 
+# 3. Donor stock after transfer preserves lead time demand + safety stock
 result["donor_stock_protected"] = (
     (result["outgoing_units"] == 0) |
     (
@@ -96,20 +98,6 @@ result["validation_passed"] = (
 # Save detailed validation
 result.to_csv(OUTPUT_FILE, index=False)
 
-# External replenishment requirements
-external = result[
-    result["external_replenishment"] > 0
-][[
-    "item_id",
-    "store_id",
-    "external_replenishment",
-    "risk_level"
-]].sort_values(
-    "external_replenishment", ascending=False
-)
-
-external.to_csv(REPLENISHMENT_FILE, index=False)
-
 # Store-level summary
 store_summary = result.groupby("store_id").agg(
     outgoing_units=("outgoing_units", "sum"),
@@ -125,67 +113,13 @@ store_summary["net_transfer"] = (
 store_summary.to_csv(STORE_SUMMARY_FILE, index=False)
 
 # Final report
-print("\nTRANSFER VALIDATION REPORT")
-print("=" * 40)
-
+print("\n4-STORE TRANSFER VALIDATION REPORT")
+print("=" * 45)
 print(f"Total transfer units: {transfers['transfer_units'].sum()}")
 print(f"Total outgoing units: {result['outgoing_units'].sum()}")
 print(f"Total incoming units: {result['incoming_units'].sum()}")
-
-print(
-    f"\nValidation passed: "
-    f"{result['validation_passed'].all()}"
-)
-
-print(
-    f"Failed inventory checks: "
-    f"{(~result['validation_passed']).sum()}"
-)
-
-print(
-    f"Total external replenishment required: "
-    f"{result['external_replenishment'].sum()}"
-)
-
-print("\nSTORE-WISE SUMMARY")
+print(f"All validation checks passed: {result['validation_passed'].all()}")
+print(f"Failed inventory checks: {(~result['validation_passed']).sum()}")
+print(f"Total external replenishment required: {result['external_replenishment'].sum()}")
+print("\nSTORE-WISE TRANSFER SUMMARY:")
 print(store_summary.to_string(index=False))
-
-print("\nTOP 10 EXTERNAL REPLENISHMENT REQUIREMENTS")
-print(external.head(10).to_string(index=False))
-
-print("\nGenerated files:")
-print(OUTPUT_FILE)
-print(REPLENISHMENT_FILE)
-print(STORE_SUMMARY_FILE)
-
-# Diagnose failed validation rows
-failed = result[~result["validation_passed"]].copy()
-
-print("\nFAILED VALIDATION BREAKDOWN")
-print("---------------------------")
-
-print("Donor safe failures:",
-      (~failed["donor_safe"]).sum())
-
-print("Recipient overfilled failures:",
-      (~failed["recipient_not_overfilled"]).sum())
-
-print("Donor stock protection failures:",
-      (~failed["donor_stock_protected"]).sum())
-
-print("\nFAILED ROW DETAILS")
-
-columns = [
-    "item_id",
-    "store_id",
-    "on_hand_stock",
-    "safe_surplus",
-    "outgoing_units",
-    "incoming_units",
-    "transfer_need",
-    "donor_safe",
-    "recipient_not_overfilled",
-    "donor_stock_protected"
-]
-
-print(failed[columns].to_string(index=False))

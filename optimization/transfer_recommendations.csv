@@ -1,241 +1,154 @@
-item_id,from_store,to_store,transfer_units,donor_safe_surplus,recipient_need
-FOODS_1_018,CA_1,TX_1,16,113,16
-FOODS_1_018,TX_1,CA_1,47,47,108
-FOODS_1_018,WI_1,CA_1,61,113,108
-FOODS_1_032,CA_1,WI_1,12,29,24
-FOODS_1_032,TX_1,WI_1,12,12,24
-FOODS_1_032,WI_1,TX_1,17,80,17
-FOODS_1_043,CA_1,WI_1,103,103,196
-FOODS_1_043,TX_1,WI_1,93,190,196
-FOODS_1_043,WI_1,CA_1,13,28,13
-FOODS_1_046,TX_1,WI_1,43,43,57
-FOODS_1_085,CA_1,WI_1,10,208,71
-FOODS_1_085,TX_1,WI_1,61,61,71
-FOODS_1_085,WI_1,TX_1,2,21,2
-FOODS_1_161,CA_1,WI_1,74,120,83
-FOODS_1_161,TX_1,WI_1,9,9,83
-FOODS_1_161,WI_1,TX_1,8,9,8
-FOODS_1_218,CA_1,TX_1,41,102,71
-FOODS_1_218,TX_1,WI_1,2,33,2
-FOODS_1_218,WI_1,TX_1,30,30,71
-FOODS_2_019,CA_1,WI_1,11,11,15
-FOODS_2_128,CA_1,WI_1,59,83,59
-FOODS_2_128,WI_1,CA_1,67,71,67
-FOODS_2_181,CA_1,TX_1,48,48,89
-FOODS_2_181,TX_1,CA_1,67,107,67
-FOODS_2_181,TX_1,WI_1,1,107,1
-FOODS_2_197,CA_1,TX_1,11,301,34
-FOODS_2_197,CA_1,WI_1,6,301,11
-FOODS_2_197,TX_1,WI_1,5,5,11
-FOODS_2_197,WI_1,TX_1,23,23,34
-FOODS_2_276,CA_1,TX_1,61,100,61
-FOODS_2_276,CA_1,WI_1,38,100,38
-FOODS_2_276,TX_1,CA_1,21,28,25
-FOODS_2_276,WI_1,CA_1,4,4,25
-FOODS_2_347,CA_1,TX_1,14,178,14
-FOODS_2_347,TX_1,WI_1,2,50,2
-FOODS_2_360,CA_1,WI_1,28,108,28
-FOODS_2_360,WI_1,CA_1,108,206,108
-FOODS_2_360,WI_1,TX_1,55,206,55
-FOODS_3_007,TX_1,WI_1,14,100,14
-FOODS_3_007,WI_1,CA_1,46,87,46
-FOODS_3_030,TX_1,WI_1,2,2,32
-FOODS_3_042,TX_1,WI_1,52,52,184
-FOODS_3_042,WI_1,CA_1,18,18,55
-FOODS_3_064,WI_1,TX_1,22,42,22
-FOODS_3_080,CA_1,WI_1,79,173,79
-FOODS_3_080,WI_1,CA_1,30,72,30
-FOODS_3_080,WI_1,TX_1,17,72,17
-FOODS_3_086,CA_1,TX_1,45,214,45
-FOODS_3_086,TX_1,WI_1,3,115,3
-FOODS_3_090,CA_1,TX_1,125,375,125
-FOODS_3_090,CA_1,WI_1,117,375,117
-FOODS_3_090,TX_1,CA_1,383,580,565
-FOODS_3_090,WI_1,CA_1,182,182,565
-FOODS_3_099,CA_1,TX_1,35,395,128
-FOODS_3_099,CA_1,WI_1,19,395,19
-FOODS_3_099,WI_1,TX_1,93,93,128
-FOODS_3_120,WI_1,TX_1,63,122,63
-FOODS_3_202,CA_1,TX_1,1,8,1
-FOODS_3_202,TX_1,CA_1,3,7,11
-FOODS_3_202,WI_1,CA_1,8,8,11
-FOODS_3_226,CA_1,WI_1,70,70,583
-FOODS_3_226,TX_1,WI_1,81,81,583
-FOODS_3_228,TX_1,WI_1,8,8,15
-FOODS_3_228,WI_1,TX_1,34,34,72
-FOODS_3_234,CA_1,WI_1,25,25,35
-FOODS_3_234,WI_1,CA_1,52,52,125
-FOODS_3_245,CA_1,TX_1,53,90,53
-FOODS_3_245,TX_1,CA_1,23,130,23
-FOODS_3_245,TX_1,WI_1,26,130,26
-FOODS_3_252,CA_1,TX_1,358,608,358
-FOODS_3_252,CA_1,WI_1,121,608,121
-FOODS_3_252,TX_1,CA_1,21,66,33
-FOODS_3_252,WI_1,CA_1,12,12,33
-FOODS_3_263,CA_1,WI_1,1,1,2
-FOODS_3_263,TX_1,WI_1,1,1,2
-FOODS_3_281,WI_1,TX_1,9,9,21
-FOODS_3_282,CA_1,TX_1,61,140,61
-FOODS_3_282,CA_1,WI_1,25,140,25
-FOODS_3_282,TX_1,CA_1,46,46,187
-FOODS_3_282,WI_1,CA_1,88,88,187
-FOODS_3_288,WI_1,CA_1,50,215,50
-FOODS_3_295,CA_1,TX_1,35,35,110
-FOODS_3_295,WI_1,CA_1,167,167,167
-FOODS_3_318,TX_1,WI_1,1,1,2
-FOODS_3_319,WI_1,CA_1,4,106,4
-FOODS_3_319,WI_1,TX_1,2,106,2
-FOODS_3_349,CA_1,WI_1,41,41,77
-FOODS_3_349,TX_1,WI_1,1,1,77
-FOODS_3_349,WI_1,TX_1,2,2,97
-FOODS_3_362,WI_1,TX_1,1,1,2
-FOODS_3_376,TX_1,WI_1,6,53,6
-FOODS_3_376,WI_1,TX_1,21,25,21
-FOODS_3_377,TX_1,WI_1,61,343,61
-FOODS_3_377,WI_1,CA_1,11,17,11
-FOODS_3_389,CA_1,TX_1,20,50,48
-FOODS_3_389,TX_1,CA_1,89,133,89
-FOODS_3_389,TX_1,WI_1,16,133,16
-FOODS_3_389,WI_1,TX_1,28,28,48
-FOODS_3_404,WI_1,TX_1,25,56,25
-FOODS_3_406,TX_1,WI_1,1,7,1
-FOODS_3_406,WI_1,TX_1,45,78,45
-FOODS_3_412,CA_1,WI_1,10,10,41
-FOODS_3_412,WI_1,CA_1,46,61,46
-FOODS_3_412,WI_1,TX_1,3,61,3
-FOODS_3_455,CA_1,TX_1,51,51,121
-FOODS_3_455,TX_1,CA_1,127,235,127
-FOODS_3_455,TX_1,WI_1,14,235,14
-FOODS_3_455,WI_1,TX_1,10,10,121
-FOODS_3_458,CA_1,TX_1,68,116,68
-FOODS_3_458,CA_1,WI_1,48,116,72
-FOODS_3_458,TX_1,CA_1,12,75,12
-FOODS_3_458,TX_1,WI_1,24,75,72
-FOODS_3_462,CA_1,WI_1,14,14,30
-FOODS_3_462,WI_1,TX_1,28,28,255
-FOODS_3_473,CA_1,WI_1,6,28,6
-FOODS_3_473,TX_1,CA_1,22,66,65
-FOODS_3_473,WI_1,CA_1,43,43,65
-FOODS_3_491,WI_1,CA_1,243,248,243
-FOODS_3_498,CA_1,WI_1,44,47,51
-FOODS_3_498,TX_1,WI_1,7,7,51
-FOODS_3_498,WI_1,CA_1,8,62,8
-FOODS_3_498,WI_1,TX_1,52,62,52
-FOODS_3_499,CA_1,TX_1,59,168,59
-FOODS_3_499,TX_1,CA_1,23,131,23
-FOODS_3_499,TX_1,WI_1,50,131,50
-FOODS_3_501,CA_1,TX_1,65,186,65
-FOODS_3_501,CA_1,WI_1,66,186,66
-FOODS_3_501,WI_1,CA_1,16,16,24
-FOODS_3_516,WI_1,TX_1,15,92,15
-FOODS_3_541,CA_1,TX_1,57,130,57
-FOODS_3_541,TX_1,CA_1,13,45,13
-FOODS_3_547,CA_1,WI_1,56,56,93
-FOODS_3_555,CA_1,WI_1,34,34,133
-FOODS_3_555,TX_1,CA_1,249,316,249
-FOODS_3_555,TX_1,WI_1,67,316,133
-FOODS_3_586,TX_1,CA_1,415,681,573
-FOODS_3_586,TX_1,WI_1,51,681,51
-FOODS_3_586,WI_1,CA_1,158,158,573
-FOODS_3_587,CA_1,TX_1,298,314,298
-FOODS_3_587,CA_1,WI_1,16,314,146
-FOODS_3_587,TX_1,CA_1,16,16,58
-FOODS_3_587,WI_1,CA_1,23,23,58
-FOODS_3_607,TX_1,CA_1,63,522,133
-FOODS_3_607,WI_1,CA_1,70,70,133
-FOODS_3_635,CA_1,TX_1,44,118,44
-FOODS_3_635,TX_1,CA_1,9,33,9
-FOODS_3_635,TX_1,WI_1,24,33,24
-FOODS_3_668,CA_1,WI_1,122,122,169
-FOODS_3_668,WI_1,TX_1,16,16,35
-FOODS_3_681,CA_1,TX_1,90,410,90
-FOODS_3_681,TX_1,CA_1,111,151,111
-FOODS_3_694,CA_1,TX_1,109,134,144
-FOODS_3_694,CA_1,WI_1,25,134,208
-FOODS_3_694,TX_1,CA_1,23,113,58
-FOODS_3_694,TX_1,WI_1,90,113,208
-FOODS_3_694,WI_1,CA_1,35,35,58
-FOODS_3_697,TX_1,CA_1,24,82,38
-FOODS_3_697,TX_1,WI_1,32,82,32
-FOODS_3_697,WI_1,CA_1,14,14,38
-FOODS_3_702,CA_1,WI_1,51,51,103
-FOODS_3_702,TX_1,CA_1,24,76,116
-FOODS_3_702,TX_1,WI_1,52,76,103
-FOODS_3_702,WI_1,CA_1,8,8,116
-FOODS_3_711,TX_1,WI_1,18,18,78
-FOODS_3_711,WI_1,TX_1,4,4,13
-FOODS_3_714,CA_1,WI_1,184,215,184
-FOODS_3_714,TX_1,CA_1,174,256,174
-FOODS_3_723,CA_1,WI_1,40,40,133
-FOODS_3_723,TX_1,WI_1,74,74,133
-FOODS_3_739,CA_1,TX_1,24,79,24
-FOODS_3_739,CA_1,WI_1,55,79,122
-FOODS_3_739,TX_1,CA_1,71,74,101
-FOODS_3_739,TX_1,WI_1,3,74,122
-FOODS_3_739,WI_1,CA_1,30,30,101
-FOODS_3_741,CA_1,TX_1,21,444,21
-FOODS_3_741,CA_1,WI_1,17,444,23
-FOODS_3_741,TX_1,WI_1,6,6,23
-FOODS_3_744,CA_1,WI_1,10,47,10
-FOODS_3_744,TX_1,CA_1,37,93,97
-FOODS_3_744,WI_1,CA_1,60,60,97
-FOODS_3_752,WI_1,CA_1,108,108,118
-FOODS_3_785,TX_1,WI_1,65,172,65
-FOODS_3_785,WI_1,CA_1,39,119,39
-FOODS_3_804,WI_1,CA_1,14,36,14
-FOODS_3_811,TX_1,CA_1,13,186,13
-FOODS_3_811,TX_1,WI_1,77,186,77
-HOBBIES_1_178,CA_1,WI_1,35,35,105
-HOBBIES_1_178,TX_1,WI_1,58,58,105
-HOBBIES_1_178,WI_1,CA_1,20,20,43
-HOBBIES_1_256,CA_1,TX_1,13,84,25
-HOBBIES_1_256,CA_1,WI_1,22,84,48
-HOBBIES_1_256,TX_1,WI_1,26,26,48
-HOBBIES_1_256,WI_1,TX_1,12,12,25
-HOBBIES_1_268,CA_1,WI_1,14,14,52
-HOBBIES_1_268,TX_1,WI_1,19,19,52
-HOBBIES_1_268,WI_1,TX_1,16,16,43
-HOBBIES_1_278,TX_1,CA_1,6,30,75
-HOBBIES_1_278,TX_1,WI_1,24,30,24
-HOBBIES_1_278,WI_1,CA_1,69,69,75
-HOBBIES_1_341,TX_1,CA_1,27,70,64
-HOBBIES_1_341,TX_1,WI_1,43,70,43
-HOBBIES_1_341,WI_1,CA_1,15,36,64
-HOBBIES_1_341,WI_1,TX_1,21,36,21
-HOBBIES_1_348,CA_1,TX_1,44,169,44
-HOBBIES_1_348,CA_1,WI_1,46,169,72
-HOBBIES_1_348,TX_1,WI_1,26,26,72
-HOBBIES_1_370,CA_1,WI_1,54,54,54
-HOBBIES_1_370,WI_1,TX_1,35,35,57
-HOBBIES_1_371,CA_1,WI_1,17,17,40
-HOBBIES_1_371,TX_1,CA_1,53,53,150
-HOBBIES_1_371,WI_1,CA_1,61,61,150
-HOUSEHOLD_1_083,CA_1,TX_1,31,52,31
-HOUSEHOLD_1_083,CA_1,WI_1,21,52,31
-HOUSEHOLD_1_083,TX_1,CA_1,8,8,35
-HOUSEHOLD_1_110,TX_1,CA_1,113,257,157
-HOUSEHOLD_1_110,WI_1,CA_1,44,44,157
-HOUSEHOLD_1_179,CA_1,WI_1,50,50,111
-HOUSEHOLD_1_179,TX_1,WI_1,32,32,111
-HOUSEHOLD_1_234,CA_1,TX_1,19,19,106
-HOUSEHOLD_1_234,TX_1,CA_1,8,8,24
-HOUSEHOLD_1_234,WI_1,TX_1,30,30,106
-HOUSEHOLD_1_303,TX_1,CA_1,61,210,62
-HOUSEHOLD_1_303,TX_1,WI_1,138,210,138
-HOUSEHOLD_1_303,WI_1,CA_1,1,1,62
-HOUSEHOLD_1_327,CA_1,TX_1,12,12,180
-HOUSEHOLD_1_327,TX_1,CA_1,14,14,30
-HOUSEHOLD_1_327,WI_1,TX_1,133,133,180
-HOUSEHOLD_1_334,CA_1,TX_1,74,74,141
-HOUSEHOLD_1_334,TX_1,CA_1,15,15,15
-HOUSEHOLD_1_334,WI_1,TX_1,67,132,141
-HOUSEHOLD_1_389,WI_1,CA_1,47,163,47
-HOUSEHOLD_1_389,WI_1,TX_1,31,163,31
-HOUSEHOLD_1_418,TX_1,CA_1,18,157,103
-HOUSEHOLD_1_418,WI_1,CA_1,85,85,103
-HOUSEHOLD_1_459,CA_1,TX_1,5,5,139
-HOUSEHOLD_1_459,TX_1,CA_1,22,22,92
-HOUSEHOLD_1_459,WI_1,TX_1,125,125,139
-HOUSEHOLD_1_521,CA_1,TX_1,20,62,117
-HOUSEHOLD_1_521,TX_1,WI_1,30,68,30
-HOUSEHOLD_1_521,WI_1,TX_1,97,97,117
+item_id,from_store,to_store,transfer_units,donor_safe_surplus,recipient_need,estimated_cost,unit_cost,remaining_shortage,status,explanation
+FOODS_1_043,CA_1,CA_2,27,103,27,40.5,1.5,0,Recommended,"Transfer 27 units of FOODS_1_043 from CA_1 to CA_2. CA_1 has 103 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $40.50)."
+FOODS_1_043,TX_1,WI_1,38,190,38,114.0,3.0,0,Recommended,"Transfer 38 units of FOODS_1_043 from TX_1 to WI_1. TX_1 has 190 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $114.00)."
+FOODS_1_046,TX_1,CA_1,7,43,26,24.5,3.5,19,Recommended,"Transfer 7 units of FOODS_1_046 from TX_1 to CA_1. TX_1 has 43 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $24.50)."
+FOODS_1_046,TX_1,WI_1,24,43,24,72.0,3.0,0,Recommended,"Transfer 24 units of FOODS_1_046 from TX_1 to WI_1. TX_1 has 43 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $72.00)."
+FOODS_1_046,TX_1,CA_2,4,43,4,14.0,3.5,0,Recommended,"Transfer 4 units of FOODS_1_046 from TX_1 to CA_2. TX_1 has 43 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $14.00)."
+FOODS_1_046,CA_2,CA_1,19,19,26,28.5,1.5,7,Recommended,"Transfer 19 units of FOODS_1_046 from CA_2 to CA_1. CA_2 has 19 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $28.50)."
+FOODS_1_085,TX_1,WI_1,7,61,7,21.0,3.0,0,Recommended,"Transfer 7 units of FOODS_1_085 from TX_1 to WI_1. TX_1 has 61 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $21.00)."
+FOODS_1_161,TX_1,WI_1,9,9,18,27.0,3.0,9,Recommended,"Transfer 9 units of FOODS_1_161 from TX_1 to WI_1. TX_1 has 9 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $27.00)."
+FOODS_1_161,CA_2,WI_1,9,105,18,45.0,5.0,9,Recommended,"Transfer 9 units of FOODS_1_161 from CA_2 to WI_1. CA_2 has 105 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $45.00)."
+FOODS_2_019,CA_1,TX_1,11,11,11,38.5,3.5,0,Recommended,"Transfer 11 units of FOODS_2_019 from CA_1 to TX_1. CA_1 has 11 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $38.50)."
+FOODS_2_019,CA_2,CA_1,50,55,50,75.0,1.5,0,Recommended,"Transfer 50 units of FOODS_2_019 from CA_2 to CA_1. CA_2 has 55 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $75.00)."
+FOODS_2_019,CA_2,WI_1,5,55,9,25.0,5.0,4,Recommended,"Transfer 5 units of FOODS_2_019 from CA_2 to WI_1. CA_2 has 55 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $25.00)."
+FOODS_2_128,CA_1,CA_2,21,83,21,31.5,1.5,0,Recommended,"Transfer 21 units of FOODS_2_128 from CA_1 to CA_2. CA_1 has 83 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $31.50)."
+FOODS_2_197,CA_1,CA_2,112,301,112,168.0,1.5,0,Recommended,"Transfer 112 units of FOODS_2_197 from CA_1 to CA_2. CA_1 has 301 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $168.00)."
+FOODS_2_197,WI_1,TX_1,9,23,9,27.0,3.0,0,Recommended,"Transfer 9 units of FOODS_2_197 from WI_1 to TX_1. WI_1 has 23 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $27.00)."
+FOODS_2_276,TX_1,WI_1,11,28,11,33.0,3.0,0,Recommended,"Transfer 11 units of FOODS_2_276 from TX_1 to WI_1. TX_1 has 28 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $33.00)."
+FOODS_2_347,TX_1,WI_1,1,50,1,3.0,3.0,0,Recommended,"Transfer 1 units of FOODS_2_347 from TX_1 to WI_1. TX_1 has 50 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $3.00)."
+FOODS_2_360,CA_1,CA_2,10,108,10,15.0,1.5,0,Recommended,"Transfer 10 units of FOODS_2_360 from CA_1 to CA_2. CA_1 has 108 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $15.00)."
+FOODS_2_360,WI_1,TX_1,10,206,10,30.0,3.0,0,Recommended,"Transfer 10 units of FOODS_2_360 from WI_1 to TX_1. WI_1 has 206 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $30.00)."
+FOODS_3_007,CA_2,CA_1,11,47,11,16.5,1.5,0,Recommended,"Transfer 11 units of FOODS_3_007 from CA_2 to CA_1. CA_2 has 47 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $16.50)."
+FOODS_3_030,TX_1,WI_1,2,2,24,6.0,3.0,22,Recommended,"Transfer 2 units of FOODS_3_030 from TX_1 to WI_1. TX_1 has 2 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $6.00)."
+FOODS_3_042,TX_1,WI_1,39,52,39,117.0,3.0,0,Recommended,"Transfer 39 units of FOODS_3_042 from TX_1 to WI_1. TX_1 has 52 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $117.00)."
+FOODS_3_042,CA_2,CA_1,20,54,20,30.0,1.5,0,Recommended,"Transfer 20 units of FOODS_3_042 from CA_2 to CA_1. CA_2 has 54 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $30.00)."
+FOODS_3_080,CA_1,CA_2,4,173,4,6.0,1.5,0,Recommended,"Transfer 4 units of FOODS_3_080 from CA_1 to CA_2. CA_1 has 173 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $6.00)."
+FOODS_3_086,CA_1,CA_2,7,214,7,10.5,1.5,0,Recommended,"Transfer 7 units of FOODS_3_086 from CA_1 to CA_2. CA_1 has 214 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $10.50)."
+FOODS_3_086,TX_1,WI_1,2,115,2,6.0,3.0,0,Recommended,"Transfer 2 units of FOODS_3_086 from TX_1 to WI_1. TX_1 has 115 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $6.00)."
+FOODS_3_099,WI_1,TX_1,38,93,38,114.0,3.0,0,Recommended,"Transfer 38 units of FOODS_3_099 from WI_1 to TX_1. WI_1 has 93 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $114.00)."
+FOODS_3_120,CA_1,CA_2,78,490,78,117.0,1.5,0,Recommended,"Transfer 78 units of FOODS_3_120 from CA_1 to CA_2. CA_1 has 490 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $117.00)."
+FOODS_3_226,CA_1,WI_1,70,70,212,350.0,5.0,142,Recommended,"Transfer 70 units of FOODS_3_226 from CA_1 to WI_1. CA_1 has 70 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $350.00)."
+FOODS_3_226,TX_1,WI_1,81,81,212,243.0,3.0,131,Recommended,"Transfer 81 units of FOODS_3_226 from TX_1 to WI_1. TX_1 has 81 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $243.00)."
+FOODS_3_226,CA_2,WI_1,60,60,212,300.0,5.0,152,Recommended,"Transfer 60 units of FOODS_3_226 from CA_2 to WI_1. CA_2 has 60 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $300.00)."
+FOODS_3_228,WI_1,TX_1,16,34,16,48.0,3.0,0,Recommended,"Transfer 16 units of FOODS_3_228 from WI_1 to TX_1. WI_1 has 34 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $48.00)."
+FOODS_3_228,CA_2,CA_1,37,82,37,55.5,1.5,0,Recommended,"Transfer 37 units of FOODS_3_228 from CA_2 to CA_1. CA_2 has 82 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $55.50)."
+FOODS_3_234,WI_1,TX_1,2,52,2,6.0,3.0,0,Recommended,"Transfer 2 units of FOODS_3_234 from WI_1 to TX_1. WI_1 has 52 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $6.00)."
+FOODS_3_234,CA_2,CA_1,14,64,14,21.0,1.5,0,Recommended,"Transfer 14 units of FOODS_3_234 from CA_2 to CA_1. CA_2 has 64 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $21.00)."
+FOODS_3_245,TX_1,WI_1,7,130,7,21.0,3.0,0,Recommended,"Transfer 7 units of FOODS_3_245 from TX_1 to WI_1. TX_1 has 130 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $21.00)."
+FOODS_3_252,CA_1,CA_2,6,608,6,9.0,1.5,0,Recommended,"Transfer 6 units of FOODS_3_252 from CA_1 to CA_2. CA_1 has 608 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $9.00)."
+FOODS_3_252,TX_1,WI_1,29,66,29,87.0,3.0,0,Recommended,"Transfer 29 units of FOODS_3_252 from TX_1 to WI_1. TX_1 has 66 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $87.00)."
+FOODS_3_252,WI_1,TX_1,12,12,61,36.0,3.0,49,Recommended,"Transfer 12 units of FOODS_3_252 from WI_1 to TX_1. WI_1 has 12 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $36.00)."
+FOODS_3_252,CA_2,TX_1,49,168,61,171.5,3.5,12,Recommended,"Transfer 49 units of FOODS_3_252 from CA_2 to TX_1. CA_2 has 168 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $171.50)."
+FOODS_3_263,CA_1,CA_2,1,1,1,1.5,1.5,0,Recommended,"Transfer 1 units of FOODS_3_263 from CA_1 to CA_2. CA_1 has 1 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $1.50)."
+FOODS_3_263,TX_1,WI_1,1,1,1,3.0,3.0,0,Recommended,"Transfer 1 units of FOODS_3_263 from TX_1 to WI_1. TX_1 has 1 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $3.00)."
+FOODS_3_281,WI_1,TX_1,9,9,16,27.0,3.0,7,Recommended,"Transfer 9 units of FOODS_3_281 from WI_1 to TX_1. WI_1 has 9 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $27.00)."
+FOODS_3_281,CA_2,CA_1,69,69,86,103.5,1.5,17,Recommended,"Transfer 69 units of FOODS_3_281 from CA_2 to CA_1. CA_2 has 69 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $103.50)."
+FOODS_3_288,CA_1,CA_2,5,81,5,7.5,1.5,0,Recommended,"Transfer 5 units of FOODS_3_288 from CA_1 to CA_2. CA_1 has 81 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $7.50)."
+FOODS_3_295,WI_1,TX_1,42,167,42,126.0,3.0,0,Recommended,"Transfer 42 units of FOODS_3_295 from WI_1 to TX_1. WI_1 has 167 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $126.00)."
+FOODS_3_295,CA_2,CA_1,26,81,26,39.0,1.5,0,Recommended,"Transfer 26 units of FOODS_3_295 from CA_2 to CA_1. CA_2 has 81 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $39.00)."
+FOODS_3_318,TX_1,WI_1,1,1,1,3.0,3.0,0,Recommended,"Transfer 1 units of FOODS_3_318 from TX_1 to WI_1. TX_1 has 1 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $3.00)."
+FOODS_3_318,CA_2,CA_1,1,1,2,1.5,1.5,1,Recommended,"Transfer 1 units of FOODS_3_318 from CA_2 to CA_1. CA_2 has 1 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $1.50)."
+FOODS_3_329,CA_2,CA_1,1,1,2,1.5,1.5,1,Recommended,"Transfer 1 units of FOODS_3_329 from CA_2 to CA_1. CA_2 has 1 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $1.50)."
+FOODS_3_349,CA_1,TX_1,18,41,29,63.0,3.5,11,Recommended,"Transfer 18 units of FOODS_3_349 from CA_1 to TX_1. CA_1 has 41 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $63.00)."
+FOODS_3_349,CA_1,WI_1,21,41,25,105.0,5.0,4,Recommended,"Transfer 21 units of FOODS_3_349 from CA_1 to WI_1. CA_1 has 41 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $105.00)."
+FOODS_3_349,CA_1,CA_2,2,41,2,3.0,1.5,0,Recommended,"Transfer 2 units of FOODS_3_349 from CA_1 to CA_2. CA_1 has 41 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $3.00)."
+FOODS_3_349,TX_1,WI_1,1,1,25,3.0,3.0,24,Recommended,"Transfer 1 units of FOODS_3_349 from TX_1 to WI_1. TX_1 has 1 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $3.00)."
+FOODS_3_349,WI_1,TX_1,2,2,29,6.0,3.0,27,Recommended,"Transfer 2 units of FOODS_3_349 from WI_1 to TX_1. WI_1 has 2 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $6.00)."
+FOODS_3_349,CA_2,TX_1,9,9,29,31.5,3.5,20,Recommended,"Transfer 9 units of FOODS_3_349 from CA_2 to TX_1. CA_2 has 9 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $31.50)."
+FOODS_3_362,WI_1,TX_1,1,1,1,3.0,3.0,0,Recommended,"Transfer 1 units of FOODS_3_362 from WI_1 to TX_1. WI_1 has 1 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $3.00)."
+FOODS_3_376,CA_1,CA_2,36,122,36,54.0,1.5,0,Recommended,"Transfer 36 units of FOODS_3_376 from CA_1 to CA_2. CA_1 has 122 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $54.00)."
+FOODS_3_377,TX_1,WI_1,8,343,8,24.0,3.0,0,Recommended,"Transfer 8 units of FOODS_3_377 from TX_1 to WI_1. TX_1 has 343 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $24.00)."
+FOODS_3_406,CA_1,CA_2,31,149,31,46.5,1.5,0,Recommended,"Transfer 31 units of FOODS_3_406 from CA_1 to CA_2. CA_1 has 149 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $46.50)."
+FOODS_3_406,WI_1,TX_1,15,78,15,45.0,3.0,0,Recommended,"Transfer 15 units of FOODS_3_406 from WI_1 to TX_1. WI_1 has 78 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $45.00)."
+FOODS_3_412,WI_1,TX_1,2,61,2,6.0,3.0,0,Recommended,"Transfer 2 units of FOODS_3_412 from WI_1 to TX_1. WI_1 has 61 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $6.00)."
+FOODS_3_412,CA_2,CA_1,16,43,16,24.0,1.5,0,Recommended,"Transfer 16 units of FOODS_3_412 from CA_2 to CA_1. CA_2 has 43 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $24.00)."
+FOODS_3_455,CA_2,CA_1,7,128,7,10.5,1.5,0,Recommended,"Transfer 7 units of FOODS_3_455 from CA_2 to CA_1. CA_2 has 128 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $10.50)."
+FOODS_3_462,CA_1,TX_1,14,14,106,49.0,3.5,92,Recommended,"Transfer 14 units of FOODS_3_462 from CA_1 to TX_1. CA_1 has 14 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $49.00)."
+FOODS_3_462,WI_1,TX_1,28,28,106,84.0,3.0,78,Recommended,"Transfer 28 units of FOODS_3_462 from WI_1 to TX_1. WI_1 has 28 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $84.00)."
+FOODS_3_462,CA_2,CA_1,21,73,21,31.5,1.5,0,Recommended,"Transfer 21 units of FOODS_3_462 from CA_2 to CA_1. CA_2 has 73 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $31.50)."
+FOODS_3_462,CA_2,TX_1,52,73,106,182.0,3.5,54,Recommended,"Transfer 52 units of FOODS_3_462 from CA_2 to TX_1. CA_2 has 73 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $182.00)."
+FOODS_3_473,CA_1,CA_2,28,28,31,42.0,1.5,3,Recommended,"Transfer 28 units of FOODS_3_473 from CA_1 to CA_2. CA_1 has 28 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $42.00)."
+FOODS_3_473,TX_1,CA_2,3,66,31,10.5,3.5,28,Recommended,"Transfer 3 units of FOODS_3_473 from TX_1 to CA_2. TX_1 has 66 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $10.50)."
+FOODS_3_491,CA_2,CA_1,86,87,86,129.0,1.5,0,Recommended,"Transfer 86 units of FOODS_3_491 from CA_2 to CA_1. CA_2 has 87 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $129.00)."
+FOODS_3_498,CA_1,CA_2,21,47,21,31.5,1.5,0,Recommended,"Transfer 21 units of FOODS_3_498 from CA_1 to CA_2. CA_1 has 47 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $31.50)."
+FOODS_3_498,WI_1,TX_1,13,62,13,39.0,3.0,0,Recommended,"Transfer 13 units of FOODS_3_498 from WI_1 to TX_1. WI_1 has 62 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $39.00)."
+FOODS_3_499,TX_1,WI_1,2,131,2,6.0,3.0,0,Recommended,"Transfer 2 units of FOODS_3_499 from TX_1 to WI_1. TX_1 has 131 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $6.00)."
+FOODS_3_501,CA_1,CA_2,4,186,4,6.0,1.5,0,Recommended,"Transfer 4 units of FOODS_3_501 from CA_1 to CA_2. CA_1 has 186 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $6.00)."
+FOODS_3_501,WI_1,TX_1,16,16,23,48.0,3.0,7,Recommended,"Transfer 16 units of FOODS_3_501 from WI_1 to TX_1. WI_1 has 16 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $48.00)."
+FOODS_3_501,CA_2,TX_1,7,56,23,24.5,3.5,16,Recommended,"Transfer 7 units of FOODS_3_501 from CA_2 to TX_1. CA_2 has 56 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $24.50)."
+FOODS_3_501,CA_2,WI_1,11,56,11,55.0,5.0,0,Recommended,"Transfer 11 units of FOODS_3_501 from CA_2 to WI_1. CA_2 has 56 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $55.00)."
+FOODS_3_541,CA_1,CA_2,53,130,53,79.5,1.5,0,Recommended,"Transfer 53 units of FOODS_3_541 from CA_1 to CA_2. CA_1 has 130 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $79.50)."
+FOODS_3_547,CA_1,TX_1,1,56,1,3.5,3.5,0,Recommended,"Transfer 1 units of FOODS_3_547 from CA_1 to TX_1. CA_1 has 56 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $3.50)."
+FOODS_3_547,CA_1,WI_1,24,56,34,120.0,5.0,10,Recommended,"Transfer 24 units of FOODS_3_547 from CA_1 to WI_1. CA_1 has 56 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $120.00)."
+FOODS_3_547,CA_1,CA_2,31,56,31,46.5,1.5,0,Recommended,"Transfer 31 units of FOODS_3_547 from CA_1 to CA_2. CA_1 has 56 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $46.50)."
+FOODS_3_555,TX_1,WI_1,42,316,42,126.0,3.0,0,Recommended,"Transfer 42 units of FOODS_3_555 from TX_1 to WI_1. TX_1 has 316 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $126.00)."
+FOODS_3_555,CA_2,CA_1,48,146,48,72.0,1.5,0,Recommended,"Transfer 48 units of FOODS_3_555 from CA_2 to CA_1. CA_2 has 146 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $72.00)."
+FOODS_3_586,CA_2,CA_1,155,290,155,232.5,1.5,0,Recommended,"Transfer 155 units of FOODS_3_586 from CA_2 to CA_1. CA_2 has 290 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $232.50)."
+FOODS_3_587,TX_1,WI_1,16,16,24,48.0,3.0,8,Recommended,"Transfer 16 units of FOODS_3_587 from TX_1 to WI_1. TX_1 has 16 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $48.00)."
+FOODS_3_587,WI_1,TX_1,23,23,79,69.0,3.0,56,Recommended,"Transfer 23 units of FOODS_3_587 from WI_1 to TX_1. WI_1 has 23 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $69.00)."
+FOODS_3_587,CA_2,TX_1,56,391,79,196.0,3.5,23,Recommended,"Transfer 56 units of FOODS_3_587 from CA_2 to TX_1. CA_2 has 391 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $196.00)."
+FOODS_3_587,CA_2,WI_1,8,391,24,40.0,5.0,16,Recommended,"Transfer 8 units of FOODS_3_587 from CA_2 to WI_1. CA_2 has 391 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $40.00)."
+FOODS_3_607,CA_1,CA_2,6,143,6,9.0,1.5,0,Recommended,"Transfer 6 units of FOODS_3_607 from CA_1 to CA_2. CA_1 has 143 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $9.00)."
+FOODS_3_635,CA_1,CA_2,41,118,41,61.5,1.5,0,Recommended,"Transfer 41 units of FOODS_3_635 from CA_1 to CA_2. CA_1 has 118 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $61.50)."
+FOODS_3_668,WI_1,TX_1,13,16,13,39.0,3.0,0,Recommended,"Transfer 13 units of FOODS_3_668 from WI_1 to TX_1. WI_1 has 16 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $39.00)."
+FOODS_3_668,CA_2,WI_1,45,118,45,225.0,5.0,0,Recommended,"Transfer 45 units of FOODS_3_668 from CA_2 to WI_1. CA_2 has 118 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $225.00)."
+FOODS_3_694,TX_1,WI_1,37,113,37,111.0,3.0,0,Recommended,"Transfer 37 units of FOODS_3_694 from TX_1 to WI_1. TX_1 has 113 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $111.00)."
+FOODS_3_702,TX_1,WI_1,28,76,28,84.0,3.0,0,Recommended,"Transfer 28 units of FOODS_3_702 from TX_1 to WI_1. TX_1 has 76 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $84.00)."
+FOODS_3_702,CA_2,CA_1,4,105,4,6.0,1.5,0,Recommended,"Transfer 4 units of FOODS_3_702 from CA_2 to CA_1. CA_2 has 105 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $6.00)."
+FOODS_3_711,TX_1,WI_1,18,18,21,54.0,3.0,3,Recommended,"Transfer 18 units of FOODS_3_711 from TX_1 to WI_1. TX_1 has 18 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $54.00)."
+FOODS_3_711,CA_2,CA_1,41,115,41,61.5,1.5,0,Recommended,"Transfer 41 units of FOODS_3_711 from CA_2 to CA_1. CA_2 has 115 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $61.50)."
+FOODS_3_711,CA_2,WI_1,3,115,21,15.0,5.0,18,Recommended,"Transfer 3 units of FOODS_3_711 from CA_2 to WI_1. CA_2 has 115 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $15.00)."
+FOODS_3_714,TX_1,WI_1,70,256,70,210.0,3.0,0,Recommended,"Transfer 70 units of FOODS_3_714 from TX_1 to WI_1. TX_1 has 256 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $210.00)."
+FOODS_3_723,TX_1,WI_1,44,74,44,132.0,3.0,0,Recommended,"Transfer 44 units of FOODS_3_723 from TX_1 to WI_1. TX_1 has 74 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $132.00)."
+FOODS_3_723,CA_2,CA_1,19,77,19,28.5,1.5,0,Recommended,"Transfer 19 units of FOODS_3_723 from CA_2 to CA_1. CA_2 has 77 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $28.50)."
+FOODS_3_739,TX_1,WI_1,9,74,9,27.0,3.0,0,Recommended,"Transfer 9 units of FOODS_3_739 from TX_1 to WI_1. TX_1 has 74 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $27.00)."
+FOODS_3_741,CA_1,CA_2,69,444,69,103.5,1.5,0,Recommended,"Transfer 69 units of FOODS_3_741 from CA_1 to CA_2. CA_1 has 444 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $103.50)."
+FOODS_3_741,TX_1,WI_1,6,6,11,18.0,3.0,5,Recommended,"Transfer 6 units of FOODS_3_741 from TX_1 to WI_1. TX_1 has 6 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $18.00)."
+FOODS_3_741,CA_2,TX_1,4,52,4,14.0,3.5,0,Recommended,"Transfer 4 units of FOODS_3_741 from CA_2 to TX_1. CA_2 has 52 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $14.00)."
+FOODS_3_741,CA_2,WI_1,5,52,11,25.0,5.0,6,Recommended,"Transfer 5 units of FOODS_3_741 from CA_2 to WI_1. CA_2 has 52 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $25.00)."
+FOODS_3_752,WI_1,CA_1,20,108,39,100.0,5.0,19,Recommended,"Transfer 20 units of FOODS_3_752 from WI_1 to CA_1. WI_1 has 108 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $100.00)."
+FOODS_3_752,WI_1,TX_1,2,108,2,6.0,3.0,0,Recommended,"Transfer 2 units of FOODS_3_752 from WI_1 to TX_1. WI_1 has 108 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $6.00)."
+FOODS_3_752,WI_1,CA_2,9,108,9,45.0,5.0,0,Recommended,"Transfer 9 units of FOODS_3_752 from WI_1 to CA_2. WI_1 has 108 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $45.00)."
+FOODS_3_752,CA_2,CA_1,19,19,39,28.5,1.5,20,Recommended,"Transfer 19 units of FOODS_3_752 from CA_2 to CA_1. CA_2 has 19 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $28.50)."
+FOODS_3_785,CA_1,CA_2,73,211,73,109.5,1.5,0,Recommended,"Transfer 73 units of FOODS_3_785 from CA_1 to CA_2. CA_1 has 211 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $109.50)."
+FOODS_3_811,TX_1,WI_1,33,186,33,99.0,3.0,0,Recommended,"Transfer 33 units of FOODS_3_811 from TX_1 to WI_1. TX_1 has 186 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $99.00)."
+HOBBIES_1_178,TX_1,WI_1,27,58,27,81.0,3.0,0,Recommended,"Transfer 27 units of HOBBIES_1_178 from TX_1 to WI_1. TX_1 has 58 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $81.00)."
+HOBBIES_1_256,CA_1,CA_2,31,84,31,46.5,1.5,0,Recommended,"Transfer 31 units of HOBBIES_1_256 from CA_1 to CA_2. CA_1 has 84 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $46.50)."
+HOBBIES_1_256,TX_1,WI_1,6,26,6,18.0,3.0,0,Recommended,"Transfer 6 units of HOBBIES_1_256 from TX_1 to WI_1. TX_1 has 26 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $18.00)."
+HOBBIES_1_268,CA_1,CA_2,14,14,56,21.0,1.5,42,Recommended,"Transfer 14 units of HOBBIES_1_268 from CA_1 to CA_2. CA_1 has 14 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $21.00)."
+HOBBIES_1_268,TX_1,WI_1,7,19,7,21.0,3.0,0,Recommended,"Transfer 7 units of HOBBIES_1_268 from TX_1 to WI_1. TX_1 has 19 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $21.00)."
+HOBBIES_1_268,TX_1,CA_2,12,19,56,42.0,3.5,44,Recommended,"Transfer 12 units of HOBBIES_1_268 from TX_1 to CA_2. TX_1 has 19 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $42.00)."
+HOBBIES_1_268,WI_1,TX_1,2,16,2,6.0,3.0,0,Recommended,"Transfer 2 units of HOBBIES_1_268 from WI_1 to TX_1. WI_1 has 16 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $6.00)."
+HOBBIES_1_268,WI_1,CA_2,14,16,56,70.0,5.0,42,Recommended,"Transfer 14 units of HOBBIES_1_268 from WI_1 to CA_2. WI_1 has 16 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $70.00)."
+HOBBIES_1_278,TX_1,CA_1,5,30,31,17.5,3.5,26,Recommended,"Transfer 5 units of HOBBIES_1_278 from TX_1 to CA_1. TX_1 has 30 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $17.50)."
+HOBBIES_1_278,CA_2,CA_1,26,26,31,39.0,1.5,5,Recommended,"Transfer 26 units of HOBBIES_1_278 from CA_2 to CA_1. CA_2 has 26 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $39.00)."
+HOBBIES_1_341,TX_1,CA_1,10,70,24,35.0,3.5,14,Recommended,"Transfer 10 units of HOBBIES_1_341 from TX_1 to CA_1. TX_1 has 70 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $35.00)."
+HOBBIES_1_341,CA_2,CA_1,14,14,24,21.0,1.5,10,Recommended,"Transfer 14 units of HOBBIES_1_341 from CA_2 to CA_1. CA_2 has 14 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $21.00)."
+HOBBIES_1_348,TX_1,WI_1,25,26,25,75.0,3.0,0,Recommended,"Transfer 25 units of HOBBIES_1_348 from TX_1 to WI_1. TX_1 has 26 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $75.00)."
+HOBBIES_1_370,CA_1,CA_2,42,54,42,63.0,1.5,0,Recommended,"Transfer 42 units of HOBBIES_1_370 from CA_1 to CA_2. CA_1 has 54 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $63.00)."
+HOBBIES_1_370,WI_1,TX_1,25,35,25,75.0,3.0,0,Recommended,"Transfer 25 units of HOBBIES_1_370 from WI_1 to TX_1. WI_1 has 35 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $75.00)."
+HOBBIES_1_371,CA_1,CA_2,17,17,42,25.5,1.5,25,Recommended,"Transfer 17 units of HOBBIES_1_371 from CA_1 to CA_2. CA_1 has 17 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $25.50)."
+HOBBIES_1_371,TX_1,CA_1,23,53,33,80.5,3.5,10,Recommended,"Transfer 23 units of HOBBIES_1_371 from TX_1 to CA_1. TX_1 has 53 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $80.50)."
+HOBBIES_1_371,TX_1,CA_2,25,53,42,87.5,3.5,17,Recommended,"Transfer 25 units of HOBBIES_1_371 from TX_1 to CA_2. TX_1 has 53 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $87.50)."
+HOBBIES_1_371,CA_2,CA_1,10,10,33,15.0,1.5,23,Recommended,"Transfer 10 units of HOBBIES_1_371 from CA_2 to CA_1. CA_2 has 10 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $15.00)."
+HOUSEHOLD_1_083,CA_1,CA_2,5,52,5,7.5,1.5,0,Recommended,"Transfer 5 units of HOUSEHOLD_1_083 from CA_1 to CA_2. CA_1 has 52 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $7.50)."
+HOUSEHOLD_1_083,TX_1,WI_1,8,8,11,24.0,3.0,3,Recommended,"Transfer 8 units of HOUSEHOLD_1_083 from TX_1 to WI_1. TX_1 has 8 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $24.00)."
+HOUSEHOLD_1_083,CA_2,TX_1,6,20,6,21.0,3.5,0,Recommended,"Transfer 6 units of HOUSEHOLD_1_083 from CA_2 to TX_1. CA_2 has 20 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $21.00)."
+HOUSEHOLD_1_083,CA_2,WI_1,3,20,11,15.0,5.0,8,Recommended,"Transfer 3 units of HOUSEHOLD_1_083 from CA_2 to WI_1. CA_2 has 20 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $15.00)."
+HOUSEHOLD_1_110,CA_2,CA_1,32,153,32,48.0,1.5,0,Recommended,"Transfer 32 units of HOUSEHOLD_1_110 from CA_2 to CA_1. CA_2 has 153 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $48.00)."
+HOUSEHOLD_1_179,TX_1,WI_1,32,32,37,96.0,3.0,5,Recommended,"Transfer 32 units of HOUSEHOLD_1_179 from TX_1 to WI_1. TX_1 has 32 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $96.00)."
+HOUSEHOLD_1_179,CA_2,TX_1,19,68,19,66.5,3.5,0,Recommended,"Transfer 19 units of HOUSEHOLD_1_179 from CA_2 to TX_1. CA_2 has 68 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $66.50)."
+HOUSEHOLD_1_179,CA_2,WI_1,5,68,37,25.0,5.0,32,Recommended,"Transfer 5 units of HOUSEHOLD_1_179 from CA_2 to WI_1. CA_2 has 68 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $25.00)."
+HOUSEHOLD_1_234,WI_1,TX_1,26,30,26,78.0,3.0,0,Recommended,"Transfer 26 units of HOUSEHOLD_1_234 from WI_1 to TX_1. WI_1 has 30 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $78.00)."
+HOUSEHOLD_1_303,CA_1,CA_2,39,45,39,58.5,1.5,0,Recommended,"Transfer 39 units of HOUSEHOLD_1_303 from CA_1 to CA_2. CA_1 has 45 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $58.50)."
+HOUSEHOLD_1_303,TX_1,WI_1,45,210,45,135.0,3.0,0,Recommended,"Transfer 45 units of HOUSEHOLD_1_303 from TX_1 to WI_1. TX_1 has 210 units of safe surplus, resolving anticipated shortage at WI_1 (cost: $135.00)."
+HOUSEHOLD_1_327,WI_1,TX_1,50,133,50,150.0,3.0,0,Recommended,"Transfer 50 units of HOUSEHOLD_1_327 from WI_1 to TX_1. WI_1 has 133 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $150.00)."
+HOUSEHOLD_1_327,CA_2,CA_1,1,12,1,1.5,1.5,0,Recommended,"Transfer 1 units of HOUSEHOLD_1_327 from CA_2 to CA_1. CA_2 has 12 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $1.50)."
+HOUSEHOLD_1_334,WI_1,TX_1,41,132,41,123.0,3.0,0,Recommended,"Transfer 41 units of HOUSEHOLD_1_334 from WI_1 to TX_1. WI_1 has 132 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $123.00)."
+HOUSEHOLD_1_418,CA_2,CA_1,28,57,28,42.0,1.5,0,Recommended,"Transfer 28 units of HOUSEHOLD_1_418 from CA_2 to CA_1. CA_2 has 57 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $42.00)."
+HOUSEHOLD_1_459,CA_1,CA_2,5,5,24,7.5,1.5,19,Recommended,"Transfer 5 units of HOUSEHOLD_1_459 from CA_1 to CA_2. CA_1 has 5 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $7.50)."
+HOUSEHOLD_1_459,TX_1,CA_1,16,22,23,56.0,3.5,7,Recommended,"Transfer 16 units of HOUSEHOLD_1_459 from TX_1 to CA_1. TX_1 has 22 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $56.00)."
+HOUSEHOLD_1_459,TX_1,CA_2,6,22,24,21.0,3.5,18,Recommended,"Transfer 6 units of HOUSEHOLD_1_459 from TX_1 to CA_2. TX_1 has 22 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $21.00)."
+HOUSEHOLD_1_459,WI_1,TX_1,34,125,34,102.0,3.0,0,Recommended,"Transfer 34 units of HOUSEHOLD_1_459 from WI_1 to TX_1. WI_1 has 125 units of safe surplus, resolving anticipated shortage at TX_1 (cost: $102.00)."
+HOUSEHOLD_1_459,WI_1,CA_2,13,125,24,65.0,5.0,11,Recommended,"Transfer 13 units of HOUSEHOLD_1_459 from WI_1 to CA_2. WI_1 has 125 units of safe surplus, resolving anticipated shortage at CA_2 (cost: $65.00)."
+HOUSEHOLD_1_459,CA_2,CA_1,7,7,23,10.5,1.5,16,Recommended,"Transfer 7 units of HOUSEHOLD_1_459 from CA_2 to CA_1. CA_2 has 7 units of safe surplus, resolving anticipated shortage at CA_1 (cost: $10.50)."

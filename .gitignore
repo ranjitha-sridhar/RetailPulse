@@ -252,3 +252,37 @@ frontend/dist/
 # RetailPulse backend runtime data
 !ml/data/forecast_7day_backtest.csv
 !ml/data/inventory_analysis.csv
+# Python environment
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local backups
+backups/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Backups and local databases
+backups/
+*.db
+*.sqlite
+*.sqlite3

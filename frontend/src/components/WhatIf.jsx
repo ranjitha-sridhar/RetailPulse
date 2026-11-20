@@ -41,15 +41,15 @@ function CustomWhatIfTooltip({ active, payload, label }) {
       <div className="custom-tooltip">
         <div className="label">{label} Demand Scenario</div>
         <div style={{ display: 'grid', gap: '5px', marginTop: '6px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', color: '#64748b' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', color: '#666666' }}>
             <span>Baseline forecast:</span>
-            <strong style={{ color: '#0f172a' }}>{Number(baseline).toFixed(1)} units</strong>
+            <strong style={{ color: '#1A1A1A' }}>{Number(baseline).toFixed(1)} units</strong>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', color: '#4f46e5' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', color: '#C62828' }}>
             <span>Simulated demand:</span>
-            <strong style={{ color: '#4f46e5' }}>{Number(scenario).toFixed(1)} units</strong>
+            <strong style={{ color: '#C62828' }}>{Number(scenario).toFixed(1)} units</strong>
           </div>
-          <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '4px', marginTop: '2px', display: 'flex', justifyContent: 'space-between', gap: '16px', fontSize: '11px', color: '#10b981', fontWeight: 600 }}>
+          <div style={{ borderTop: '1px solid #E5E5E5', paddingTop: '4px', marginTop: '2px', display: 'flex', justifyContent: 'space-between', gap: '16px', fontSize: '11px', color: '#2E7D32', fontWeight: 600 }}>
             <span>Additional needed:</span>
             <span>+{Number(delta).toFixed(1)} units</span>
           </div>
@@ -139,9 +139,10 @@ function WhatIf() {
               value={store}
               onChange={(e) => setStore(e.target.value)}
             >
-              <option value="CA_1">CA_1 (California)</option>
-              <option value="TX_1">TX_1 (Texas)</option>
-              <option value="WI_1">WI_1 (Wisconsin)</option>
+              <option value="CA_1">CA_1 (California Store 1)</option>
+              <option value="CA_2">CA_2 (California Store 2)</option>
+              <option value="TX_1">TX_1 (Texas Store 1)</option>
+              <option value="WI_1">WI_1 (Wisconsin Store 1)</option>
             </select>
           </div>
 
@@ -338,13 +339,13 @@ function WhatIf() {
                   <Bar
                     dataKey="baseline"
                     name="Baseline ML Forecast"
-                    fill="#94a3b8"
+                    fill="#9E9E9E"
                     radius={[4, 4, 0, 0]}
                   />
                   <Bar
                     dataKey="scenario"
                     name={`Scenario (+${uplift}%)`}
-                    fill="#4f46e5"
+                    fill="#C62828"
                     radius={[4, 4, 0, 0]}
                   />
                 </BarChart>

@@ -1,4 +1,5 @@
 store_id,outgoing_units,incoming_units,external_replenishment,net_transfer
-CA_1,3924,4649,1646,725
-TX_1,4022,3220,1322,-802
-WI_1,3370,3447,1332,77
+CA_1,978,863,46,-115
+TX_1,827,677,55,-150
+WI_1,487,985,56,498
+CA_2,1138,905,18,-233

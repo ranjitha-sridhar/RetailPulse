@@ -178,10 +178,11 @@ function Inventory({ onNavigateToForecast }) {
         <div>
           <label>Store Region</label>
           <select value={store} onChange={e => setStore(e.target.value)}>
-            <option value="All">All stores (CA_1, TX_1, WI_1)</option>
-            <option value="CA_1">CA_1 (California)</option>
-            <option value="TX_1">TX_1 (Texas)</option>
-            <option value="WI_1">WI_1 (Wisconsin)</option>
+            <option value="All">All 4 Stores (CA_1, CA_2, TX_1, WI_1)</option>
+            <option value="CA_1">CA_1 (California Store 1)</option>
+            <option value="CA_2">CA_2 (California Store 2)</option>
+            <option value="TX_1">TX_1 (Texas Store 1)</option>
+            <option value="WI_1">WI_1 (Wisconsin Store 1)</option>
           </select>
         </div>
 

@@ -195,9 +195,10 @@ function UserManagement() {
                   onChange={handleChange}
                 >
                   <option value="">Select Store...</option>
-                  <option value="CA_1">CA_1 (California)</option>
-                  <option value="TX_1">TX_1 (Texas)</option>
-                  <option value="WI_1">WI_1 (Wisconsin)</option>
+                  <option value="CA_1">CA_1 (California Store 1)</option>
+                  <option value="CA_2">CA_2 (California Store 2)</option>
+                  <option value="TX_1">TX_1 (Texas Store 1)</option>
+                  <option value="WI_1">WI_1 (Wisconsin Store 1)</option>
                 </select>
               </div>
             )}
@@ -244,7 +245,7 @@ function UserManagement() {
               <strong style={{ fontSize: '13px', color: 'var(--color-heading)' }}>Platform Administrator</strong>
             </div>
             <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '12px', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
-              <li>Full visibility into all 3 store regions</li>
+              <li>Full visibility into all 4 store regions (CA_1, CA_2, TX_1, WI_1)</li>
               <li>Execute global MIP transfer optimization</li>
               <li>Manage and provision user credentials</li>
               <li>Configure What-If simulation parameters</li>

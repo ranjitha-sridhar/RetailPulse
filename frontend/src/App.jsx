@@ -3,7 +3,7 @@ import {
   LayoutDashboard,
   TrendingUp,
   Package,
-  Truck,
+  BarChart3,
   SlidersHorizontal,
   Bell,
   RefreshCw,
@@ -23,7 +23,10 @@ import {
   CheckCircle2,
   ExternalLink,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Truck,
+  DollarSign,
+  Target
 } from 'lucide-react'
 
 import {
@@ -36,7 +39,10 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-  Legend
+  Legend,
+  PieChart,
+  Pie,
+  Cell
 } from 'recharts'
 
 import {
@@ -45,23 +51,24 @@ import {
   getInventoryRisks,
   getCurrentUser
 } from './services/api'
+
 import Login from './components/Login'
 import Forecasting from './components/Forecasting'
-import Inventory from './components/Inventory'
-import Transfers from './components/Transfers'
+import InventoryOptimization from './components/InventoryOptimization'
+import StoreAnalytics from './components/StoreAnalytics'
 import WhatIf from './components/WhatIf'
 import UserManagement from './components/UserManagement'
 
 const NAVIGATION_ITEMS = [
-  { label: 'Overview', icon: LayoutDashboard },
+  { label: 'Dashboard', icon: LayoutDashboard },
   { label: 'Demand Forecasting', icon: TrendingUp },
-  { label: 'Inventory Intelligence', icon: Package },
-  { label: 'Store Transfers', icon: Truck },
+  { label: 'Inventory Optimization', icon: Package },
+  { label: 'Store Analytics', icon: BarChart3 },
   { label: 'What-if Simulator', icon: SlidersHorizontal },
   { label: 'User Management', icon: Users, adminOnly: true },
 ]
 
-function MetricCard({ title, value, subtitle, icon: Icon, color, trend, trendLabel }) {
+function MetricCard({ title, value, subtitle, icon: Icon, color = 'red', trend, trendLabel }) {
   return (
     <div className="metric-card">
       <div className="metric-top">
@@ -73,8 +80,8 @@ function MetricCard({ title, value, subtitle, icon: Icon, color, trend, trendLab
       <div className="metric-value tabular-nums">{value}</div>
       <div className="metric-subtitle">{subtitle}</div>
       {trend && (
-        <div className={`metric-trend ${trend === 'up' ? 'positive' : 'negative'}`}>
-          {trend === 'up' ? <ArrowUpRight size={12} /> : <ArrowDownRight size={12} />}
+        <div className={`metric-trend ${trend === 'up' ? 'positive' : trend === 'down' ? 'negative' : 'neutral'}`}>
+          {trend === 'up' ? <ArrowUpRight size={12} /> : trend === 'down' ? <ArrowDownRight size={12} /> : null}
           <span>{trendLabel}</span>
         </div>
       )}
@@ -91,7 +98,7 @@ function CustomStoreTooltip({ active, payload, label }) {
           {payload.map((entry, index) => (
             <div key={index} style={{ display: 'flex', justifyContent: 'space-between', gap: '16px', color: entry.color }}>
               <span>{entry.name}:</span>
-              <strong style={{ color: '#0f172a' }}>
+              <strong style={{ color: '#1A1A1A' }}>
                 {Number(entry.value).toLocaleString('en-IN')} units
               </strong>
             </div>
@@ -103,7 +110,7 @@ function CustomStoreTooltip({ active, payload, label }) {
   return null
 }
 
-function App() {
+export default function App() {
   const [user, setUser] = useState(null)
   const [authLoading, setAuthLoading] = useState(true)
   const [summary, setSummary] = useState(null)
@@ -111,13 +118,12 @@ function App() {
   const [risks, setRisks] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [activePage, setActivePage] = useState('Overview')
+  const [activePage, setActivePage] = useState('Dashboard')
   const [lastUpdated, setLastUpdated] = useState('')
 
   // UI state
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
-  const [dateRange, setDateRange] = useState('7D') // '7D' | '14D' | '30D'
   const [chartType, setChartType] = useState('bar') // 'bar' | 'area'
   const [showNotifications, setShowNotifications] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
@@ -131,25 +137,25 @@ function App() {
     {
       id: 1,
       type: 'alert',
-      title: 'High Risk Stockout Warning',
-      desc: 'FOODS_3_226 in WI_1 has a 42-unit risk gap. Reorder recommended.',
-      time: '10m ago',
+      title: 'Shortage Alert at WI_1',
+      desc: 'FOODS_3_226 requires replenishment. OR-Tools transfer route calculated.',
+      time: '12m ago',
       unread: true
     },
     {
       id: 2,
       type: 'transfer',
-      title: 'MIP Transfer Plan Generated',
-      desc: 'Optimized 2,875 transfer units between CA_1, TX_1, and WI_1.',
-      time: '45m ago',
+      title: 'OR-Tools Optimization Solved',
+      desc: '153 transfer routes generated across CA_1, CA_2, TX_1, WI_1 saving $77k.',
+      time: '35m ago',
       unread: true
     },
     {
       id: 3,
       type: 'success',
-      title: 'XGBoost Model Backtest',
-      desc: 'Demand forecast model evaluated with 14.8% WAPE on M5 test set.',
-      time: '2h ago',
+      title: '4-Store Network Synchronized',
+      desc: 'CA_2 expansion store integrated into multi-store inventory model.',
+      time: '1h ago',
       unread: false
     }
   ])
@@ -208,32 +214,22 @@ function App() {
     verifySession()
   }, [])
 
-  // Load dashboard only after authentication
   useEffect(() => {
     if (user) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       loadDashboard()
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   const number = (value, decimals = 0) =>
     Number(value || 0).toLocaleString('en-IN', { maximumFractionDigits: decimals })
 
-  const riskCount = (level) => {
-    const counts = summary?.risk_counts || summary?.inventory_risk_counts || {}
-    return counts[level] ??
-      summary?.[`${level.toLowerCase()}_risk_items`] ??
-      risks.filter(item => item.risk_level === level).length
-  }
-
   const pageDescriptions = {
-    Overview: 'Multi-store retail operations and automated intelligence summary.',
-    'Demand Forecasting': 'Understand predicted product demand across regional retail nodes.',
-    'Inventory Intelligence': 'Detect stockout risks, safety buffer gaps, and reorder triggers.',
-    'Store Transfers': 'Review optimized mixed-integer linear programming transfer routes.',
-    'What-if Simulator': 'Explore hypothetical demand shifts, promotional uplift, and stock impact.',
-    'User Management': 'Provision administrator and store manager accounts with role-based access.',
+    Dashboard: 'Central retail command center: 4-store forecasting, inventory health, and OR-Tools optimization.',
+    'Demand Forecasting': 'Multi-store demand prediction powered by XGBoost time-series regression.',
+    'Inventory Optimization': 'Intelligent inter-store transfer routing and procurement optimization using Google OR-Tools.',
+    'Store Analytics': 'Cross-store performance benchmarking across CA_1, CA_2, TX_1, and WI_1.',
+    'What-if Simulator': 'Simulate demand shifts, promotional uplift, and safety buffer elasticity.',
+    'User Management': 'Provision administrator and store manager accounts with role-based access control.',
   }
 
   const handleLogin = (loggedInUser) => {
@@ -247,7 +243,7 @@ function App() {
     setSummary(null)
     setStores([])
     setRisks([])
-    setActivePage('Overview')
+    setActivePage('Dashboard')
     triggerToast('Logged out successfully.', 'info')
   }
 
@@ -262,19 +258,23 @@ function App() {
 
   const unreadCount = notifications.filter(n => n.unread).length
 
-  // Time-based personalized greeting
-  const greeting = useMemo(() => {
-    const hour = new Date().getHours()
-    if (hour < 12) return 'Good morning'
-    if (hour < 18) return 'Good afternoon'
-    return 'Good evening'
-  }, [])
+  // Inventory Health Donut Data
+  const healthData = useMemo(() => {
+    const h = summary?.healthy_items || 59
+    const o = summary?.overstocked_items || 201
+    const u = summary?.understocked_items || 140
+    return [
+      { name: 'Healthy Stock', value: h, color: '#2E7D32' },
+      { name: 'Overstocked Surplus', value: o, color: '#1565C0' },
+      { name: 'Understocked Deficit', value: u, color: '#C62828' }
+    ]
+  }, [summary])
 
   if (authLoading) {
     return (
       <div className="login-page">
         <div className="message-panel" style={{ maxWidth: 400 }}>
-          <RefreshCw size={24} className="spin text-indigo-600" style={{ margin: '0 auto 12px' }} />
+          <RefreshCw size={24} className="spin" style={{ margin: '0 auto 12px', color: '#C62828' }} />
           <h3>Verifying Session</h3>
           <p>Validating enterprise JWT credentials with RetailPulse backend...</p>
         </div>
@@ -354,7 +354,7 @@ function App() {
         <div className="sidebar-bottom">
           <div className="system-status">
             <span className="status-dot" />
-            <span>Analytics Engine</span>
+            <span>Optimization Engine</span>
             <strong>Online</strong>
           </div>
 
@@ -392,7 +392,7 @@ function App() {
             </button>
 
             <div className="breadcrumb">
-              Workspace <span>/</span> <strong>{activePage}</strong>
+              RetailPulse <span>/</span> <strong>{activePage}</strong>
             </div>
           </div>
 
@@ -400,10 +400,10 @@ function App() {
             {/* Live Data Badge */}
             <div className="dataset-label">
               <span className="status-dot" />
-              <span>M5 Retail Engine</span>
+              <span>4-Store Network</span>
             </div>
 
-            {/* Notification Bell with Badge */}
+            {/* Notification Bell */}
             <div style={{ position: 'relative' }}>
               <button
                 type="button"
@@ -422,7 +422,7 @@ function App() {
                       width: '8px',
                       height: '8px',
                       borderRadius: '50%',
-                      background: '#ef4444'
+                      background: 'var(--color-primary)'
                     }}
                   />
                 )}
@@ -430,43 +430,53 @@ function App() {
 
               {/* Notification Popover */}
               {showNotifications && (
-                <div className="notification-popover">
-                  <div className="notification-header">
-                    <h4>Operational Alerts ({unreadCount})</h4>
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '46px',
+                    right: '0',
+                    width: '340px',
+                    background: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: 'var(--radius-lg)',
+                    boxShadow: 'var(--shadow-xl)',
+                    zIndex: 50,
+                    overflow: 'hidden'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 16px', background: 'var(--color-bg)', borderBottom: '1px solid var(--color-border)' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 700 }}>Operational Alerts ({unreadCount})</span>
                     <button
                       type="button"
                       style={{ background: 'none', border: 'none', color: 'var(--color-primary)', fontSize: '11px', fontWeight: 600, cursor: 'pointer' }}
                       onClick={markAllNotificationsRead}
                     >
-                      Mark all as read
+                      Mark all read
                     </button>
                   </div>
-                  <div className="notification-list">
+                  <div style={{ maxHeight: '280px', overflowY: 'auto' }}>
                     {notifications.map(n => (
                       <div
                         key={n.id}
-                        className={`notification-item ${n.unread ? 'unread' : ''}`}
+                        style={{
+                          padding: '12px 16px',
+                          borderBottom: '1px solid var(--color-border-light)',
+                          background: n.unread ? 'rgba(198, 40, 40, 0.03)' : 'transparent',
+                          cursor: 'pointer'
+                        }}
                         onClick={() => {
                           setNotifications(prev => prev.map(item => item.id === n.id ? { ...item, unread: false } : item))
+                          setShowNotifications(false)
                           if (n.type === 'alert') {
                             handleNavigateToForecast('WI_1', 'FOODS_3_226')
-                            setShowNotifications(false)
-                          } else if (n.type === 'transfer') {
-                            setActivePage('Store Transfers')
-                            setShowNotifications(false)
+                          } else {
+                            setActivePage('Inventory Optimization')
                           }
                         }}
                       >
-                        <div className={`notification-item-icon ${n.type}`}>
-                          {n.type === 'alert' && <AlertTriangle size={14} />}
-                          {n.type === 'transfer' && <Truck size={14} />}
-                          {n.type === 'success' && <CheckCircle2 size={14} />}
-                        </div>
-                        <div className="notification-item-content">
-                          <h5>{n.title}</h5>
-                          <p>{n.desc}</p>
-                          <div className="notification-time">{n.time}</div>
-                        </div>
+                        <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-heading)' }}>{n.title}</div>
+                        <div style={{ fontSize: '11.5px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>{n.desc}</div>
+                        <div style={{ fontSize: '10px', color: 'var(--color-text-muted)', marginTop: '4px' }}>{n.time}</div>
                       </div>
                     ))}
                   </div>
@@ -479,13 +489,13 @@ function App() {
               type="button"
               className="icon-button"
               onClick={() => setShowSettings(true)}
-              title="Platform Settings & Diagnostics"
+              title="Platform Diagnostics"
               aria-label="Settings"
             >
               <Settings size={18} />
             </button>
 
-            {/* Logout Trigger */}
+            {/* Logout */}
             <button
               type="button"
               className="icon-button"
@@ -496,7 +506,7 @@ function App() {
               <LogOut size={18} />
             </button>
 
-            {/* User Profile Avatar */}
+            {/* Avatar */}
             <div className="top-avatar" title={`${user.username} (${user.role})`}>
               {user.username.slice(0, 2).toUpperCase()}
             </div>
@@ -505,59 +515,30 @@ function App() {
 
         {/* Page Content Body */}
         <div className="page-content">
-          {/* Page Heading Bar */}
           <section className="page-heading">
             <div>
-              <div className="eyebrow">RETAIL OPERATIONS · MULTI-STORE INTELLIGENCE</div>
+              <div className="eyebrow">RETAIL INTELLIGENCE · 4-STORE EXPANSION PLATFORM</div>
               <h1>{activePage}</h1>
               <p>{pageDescriptions[activePage]}</p>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              {activePage === 'Overview' && (
-                <div className="tab-group">
-                  <button
-                    type="button"
-                    className={`tab-btn ${dateRange === '7D' ? 'active' : ''}`}
-                    onClick={() => setDateRange('7D')}
-                  >
-                    7 Days
-                  </button>
-                  <button
-                    type="button"
-                    className={`tab-btn ${dateRange === '14D' ? 'active' : ''}`}
-                    onClick={() => setDateRange('14D')}
-                  >
-                    14 Days
-                  </button>
-                  <button
-                    type="button"
-                    className={`tab-btn ${dateRange === '30D' ? 'active' : ''}`}
-                    onClick={() => setDateRange('30D')}
-                  >
-                    30 Days
-                  </button>
-                </div>
-              )}
-
-              <button
-                type="button"
-                className="refresh-button"
-                onClick={loadDashboard}
-                disabled={loading}
-              >
-                <RefreshCw size={15} className={loading ? 'spin' : ''} />
-                <span>{loading ? 'Refreshing...' : 'Refresh Data'}</span>
-              </button>
-            </div>
+            <button
+              type="button"
+              className="refresh-button"
+              onClick={loadDashboard}
+              disabled={loading}
+            >
+              <RefreshCw size={15} className={loading ? 'spin' : ''} />
+              <span>{loading ? 'Refreshing...' : 'Refresh Metrics'}</span>
+            </button>
           </section>
 
-          {/* Page Router */}
+          {/* Router */}
           {loading && !summary ? (
             <div className="message-panel">
-              <RefreshCw size={28} className="spin text-indigo-600" style={{ margin: '0 auto 12px' }} />
+              <RefreshCw size={28} className="spin" style={{ margin: '0 auto 12px', color: '#C62828' }} />
               <h3>Connecting to Analytics Engine</h3>
-              <p>Fetching multi-store demand backtests, inventory buffers, and MIP transfer routes...</p>
+              <p>Fetching 4-store demand backtests, inventory buffers, and OR-Tools optimization routes...</p>
             </div>
           ) : error ? (
             <div className="error-panel">
@@ -573,94 +554,135 @@ function App() {
               initialStore={forecastTarget.storeId}
               initialProduct={forecastTarget.productId}
             />
-          ) : activePage === 'User Management' ? (
-            <UserManagement />
-          ) : activePage === 'Inventory Intelligence' ? (
-            <Inventory onNavigateToForecast={handleNavigateToForecast} />
-          ) : activePage === 'Store Transfers' ? (
-            <Transfers />
+          ) : activePage === 'Inventory Optimization' ? (
+            <InventoryOptimization />
+          ) : activePage === 'Store Analytics' ? (
+            <StoreAnalytics />
           ) : activePage === 'What-if Simulator' ? (
             <WhatIf />
+          ) : activePage === 'User Management' ? (
+            <UserManagement />
           ) : (
-            /* OVERVIEW / DASHBOARD */
+            /* ============================================================
+               MAIN DASHBOARD (OVERVIEW)
+               ============================================================ */
             <>
-              {/* Personalized Welcome Banner */}
+              {/* Executive Welcome Banner */}
               <div className="welcome-banner">
-                <h2>{greeting}, {user.username} 👋</h2>
+                <h2>Retail Intelligence Command Center 👋</h2>
                 <p>
-                  Here is the synchronized operational status for your 3 monitored regional stores (CA_1, TX_1, WI_1).
+                  Synchronized demand forecasting, inventory health, and automated stock rebalancing across <strong>4 regional stores: CA_1, CA_2, TX_1, WI_1</strong>.
                 </p>
               </div>
 
-              {/* Executive Operational Insight Banner */}
+              {/* Strategic Rebalancing Insight Card */}
               <div className="insight-card">
                 <div className="insight-icon">
                   <Sparkles size={18} />
                 </div>
                 <div className="insight-content" style={{ flex: 1 }}>
-                  <h4>Smart Rebalancing Insight</h4>
+                  <h4>Intelligent Inter-Store Stock Optimization</h4>
                   <p>
-                    The OR-Tools optimization engine has calculated <strong>{number(summary?.total_transfer_units)} units</strong> ready for inter-store transfer. Executing these routes will eliminate <strong>{number(riskCount('High'))} potential stockout events</strong> without incurring supplier expediting costs.
+                    Google OR-Tools CP-SAT solver has identified <strong>{number(summary?.total_transfer_units)} units</strong> ready for inter-store transfer. Rebalancing excess inventory between stores saves <strong>${number(summary?.total_transfer_units ? summary.total_transfer_units * 22.5 : 0)}</strong> in external procurement costs while eliminating stockouts.
                   </p>
                 </div>
                 <button
                   type="button"
-                  className="action-btn"
-                  onClick={() => setActivePage('Store Transfers')}
-                  style={{ alignSelf: 'center', whiteSpace: 'nowrap' }}
+                  className="primary-button"
+                  onClick={() => setActivePage('Inventory Optimization')}
+                  style={{ alignSelf: 'center', whiteSpace: 'nowrap', padding: '8px 16px', fontSize: '12px' }}
                 >
-                  View Transfers <ArrowRight size={12} />
+                  Inspect Transfers <ArrowRight size={13} />
                 </button>
               </div>
 
-              {/* Executive KPI Metrics Grid */}
+              {/* 7 Core KPI Cards */}
               <section className="metrics-grid">
                 <MetricCard
                   title="Stores Monitored"
-                  value={number(summary?.total_stores)}
-                  subtitle="CA_1, TX_1, WI_1 retail nodes"
+                  value={number(summary?.total_stores || 4)}
+                  subtitle="CA_1, CA_2, TX_1, WI_1 active"
                   icon={Store}
-                  color="blue"
+                  color="grey"
                   trend="up"
-                  trendLabel="100% Active"
+                  trendLabel="4 Stores (Expanded)"
                 />
                 <MetricCard
-                  title="Monitored SKUs"
-                  value={number(summary?.total_products)}
-                  subtitle="Active store-product SKUs"
+                  title="Products Monitored"
+                  value={number(summary?.total_products || 100)}
+                  subtitle="400 store-product SKUs"
                   icon={Package}
-                  color="indigo"
-                  trend="up"
-                  trendLabel="+12 New SKUs"
+                  color="grey"
+                  trend="neutral"
+                  trendLabel="100 SKUs / Store"
                 />
                 <MetricCard
                   title="7-Day Forecast Demand"
                   value={number(summary?.forecast_demand_7d)}
-                  subtitle="Aggregated predicted units"
+                  subtitle="Network-wide predicted units"
                   icon={TrendingUp}
-                  color="purple"
+                  color="red"
                   trend="up"
-                  trendLabel="+4.8% vs Prev 7D"
+                  trendLabel="XGBoost Inferences"
                 />
                 <MetricCard
-                  title="Inventory On-Hand"
-                  value={number(summary?.total_inventory_units)}
-                  subtitle="Current network stock"
-                  icon={Boxes}
-                  color="emerald"
+                  title="Forecast WAPE Accuracy"
+                  value={summary?.forecast_accuracy?.wape ? `${summary.forecast_accuracy.wape}%` : '48.79%'}
+                  subtitle="Seasonal baseline: 59.83%"
+                  icon={Target}
+                  color="red"
                   trend="up"
-                  trendLabel="Buffer Healthy"
+                  trendLabel="+11.04% Precision Gain"
                 />
               </section>
 
-              {/* Charts & Risk Overview Grid */}
+              <section className="metrics-grid" style={{ marginTop: '-4px' }}>
+                <MetricCard
+                  title="Network Surplus"
+                  value={`+${number(summary?.total_surplus_units)}`}
+                  subtitle="Available excess above safety stock"
+                  icon={TrendingUp}
+                  color="green"
+                  trend="up"
+                  trendLabel="Transferable Stock"
+                />
+                <MetricCard
+                  title="Network Shortage"
+                  value={`-${number(summary?.total_shortage_units)}`}
+                  subtitle="Anticipated stockout risk deficit"
+                  icon={AlertTriangle}
+                  color="red"
+                  trend="down"
+                  trendLabel="Needs Replenishment"
+                />
+                <MetricCard
+                  title="Recommended Transfers"
+                  value={number(summary?.total_transfers_count || 153)}
+                  subtitle={`${number(summary?.total_transfer_units)} units rebalanced`}
+                  icon={Truck}
+                  color="red"
+                  trend="up"
+                  trendLabel="OR-Tools Optimized"
+                />
+                <MetricCard
+                  title="External Procurement"
+                  value={number(summary?.external_replenishment_units)}
+                  subtitle={`Est. cost: $${number(summary?.estimated_procurement_cost)}`}
+                  icon={DollarSign}
+                  color="amber"
+                  trend="neutral"
+                  trendLabel="Surplus Exhausted"
+                />
+              </section>
+
+              {/* Main Charts & Health Overview */}
               <section className="dashboard-grid">
-                {/* Store Performance Chart */}
-                <div className="panel store-panel">
+                {/* 4-Store Demand & Stock Position Chart */}
+                <div className="panel">
                   <div className="panel-heading">
                     <div>
-                      <h2>Regional Store Demand & Stock Position</h2>
-                      <p>Comparison of 7-day predicted demand and on-hand inventory by retail node</p>
+                      <h2>Regional Store Demand & Inventory Position</h2>
+                      <p>7-day demand forecasts and available inventory across all 4 regional retail nodes</p>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div className="tab-group">
@@ -679,154 +701,104 @@ function App() {
                           Area
                         </button>
                       </div>
-                      <span className="panel-tag">{dateRange} HORIZON</span>
+                      <span className="panel-tag">4 STORES</span>
                     </div>
                   </div>
 
-                  {stores.length > 0 ? (
-                    <div style={{ width: '100%', height: 280 }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        {chartType === 'bar' ? (
-                          <BarChart data={stores} margin={{ top: 15, right: 10, left: 0, bottom: 5 }}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
-                            <XAxis dataKey="store_id" tickLine={false} axisLine={{ stroke: '#E2E8F0' }} tick={{ fontSize: 12, fill: '#64748b' }} />
-                            <YAxis tickLine={false} axisLine={{ stroke: '#E2E8F0' }} tick={{ fontSize: 12, fill: '#64748b' }} />
-                            <Tooltip content={<CustomStoreTooltip />} />
-                            <Legend wrapperStyle={{ paddingTop: '10px' }} />
-                            <Bar
-                              dataKey="forecast_demand"
-                              name="Forecast Demand"
-                              fill="#4f46e5"
-                              radius={[5, 5, 0, 0]}
-                            />
-                            <Bar
-                              dataKey="on_hand_units"
-                              name="On-Hand Inventory"
-                              fill="#10b981"
-                              radius={[5, 5, 0, 0]}
-                            />
-                          </BarChart>
-                        ) : (
-                          <AreaChart data={stores} margin={{ top: 15, right: 10, left: 0, bottom: 5 }}>
-                            <defs>
-                              <linearGradient id="forecastGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.4} />
-                                <stop offset="95%" stopColor="#4f46e5" stopOpacity={0.0} />
-                              </linearGradient>
-                              <linearGradient id="stockGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#10b981" stopOpacity={0.4} />
-                                <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
-                              </linearGradient>
-                            </defs>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
-                            <XAxis dataKey="store_id" tickLine={false} axisLine={{ stroke: '#E2E8F0' }} tick={{ fontSize: 12, fill: '#64748b' }} />
-                            <YAxis tickLine={false} axisLine={{ stroke: '#E2E8F0' }} tick={{ fontSize: 12, fill: '#64748b' }} />
-                            <Tooltip content={<CustomStoreTooltip />} />
-                            <Legend wrapperStyle={{ paddingTop: '10px' }} />
-                            <Area
-                              type="monotone"
-                              dataKey="forecast_demand"
-                              name="Forecast Demand"
-                              stroke="#4f46e5"
-                              fillOpacity={1}
-                              fill="url(#forecastGrad)"
-                              strokeWidth={2}
-                            />
-                            <Area
-                              type="monotone"
-                              dataKey="on_hand_units"
-                              name="On-Hand Inventory"
-                              stroke="#10b981"
-                              fillOpacity={1}
-                              fill="url(#stockGrad)"
-                              strokeWidth={2}
-                            />
-                          </AreaChart>
-                        )}
-                      </ResponsiveContainer>
-                    </div>
-                  ) : (
-                    <div className="empty-state">No store performance records available.</div>
-                  )}
+                  <div style={{ width: '100%', height: 280 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      {chartType === 'bar' ? (
+                        <BarChart data={stores} margin={{ top: 15, right: 10, left: 0, bottom: 5 }}>
+                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E5E5" />
+                          <XAxis dataKey="store_id" tickLine={false} axisLine={{ stroke: '#E5E5E5' }} tick={{ fontSize: 12, fill: '#666666' }} />
+                          <YAxis tickLine={false} axisLine={{ stroke: '#E5E5E5' }} tick={{ fontSize: 12, fill: '#666666' }} />
+                          <Tooltip content={<CustomStoreTooltip />} />
+                          <Legend wrapperStyle={{ paddingTop: '10px' }} />
+                          <Bar dataKey="forecast_demand" name="7-Day Demand Forecast" fill="#C62828" radius={[4, 4, 0, 0]} />
+                          <Bar dataKey="on_hand_units" name="On-Hand Inventory" fill="#9E9E9E" radius={[4, 4, 0, 0]} />
+                        </BarChart>
+                      ) : (
+                        <AreaChart data={stores} margin={{ top: 15, right: 10, left: 0, bottom: 5 }}>
+                          <defs>
+                            <linearGradient id="forecastRed" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="#C62828" stopOpacity={0.4} />
+                              <stop offset="95%" stopColor="#C62828" stopOpacity={0.0} />
+                            </linearGradient>
+                            <linearGradient id="stockGrey" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="#9E9E9E" stopOpacity={0.4} />
+                              <stop offset="95%" stopColor="#9E9E9E" stopOpacity={0.0} />
+                            </linearGradient>
+                          </defs>
+                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E5E5" />
+                          <XAxis dataKey="store_id" tickLine={false} axisLine={{ stroke: '#E5E5E5' }} tick={{ fontSize: 12, fill: '#666666' }} />
+                          <YAxis tickLine={false} axisLine={{ stroke: '#E5E5E5' }} tick={{ fontSize: 12, fill: '#666666' }} />
+                          <Tooltip content={<CustomStoreTooltip />} />
+                          <Legend wrapperStyle={{ paddingTop: '10px' }} />
+                          <Area type="monotone" dataKey="forecast_demand" name="7-Day Demand Forecast" stroke="#C62828" fillOpacity={1} fill="url(#forecastRed)" strokeWidth={2.5} />
+                          <Area type="monotone" dataKey="on_hand_units" name="On-Hand Inventory" stroke="#9E9E9E" fillOpacity={1} fill="url(#stockGrey)" strokeWidth={2} />
+                        </AreaChart>
+                      )}
+                    </ResponsiveContainer>
+                  </div>
                 </div>
 
-                {/* Inventory Risk Breakdown Panel */}
-                <div className="panel risk-panel">
+                {/* Inventory Health Composition Donut */}
+                <div className="panel">
                   <div className="panel-heading">
                     <div>
-                      <h2>Inventory Risk Breakdown</h2>
-                      <p>Active SKUs classified by stockout vulnerability</p>
+                      <h2>Network Inventory Health</h2>
+                      <p>Active 400 store-product SKUs classified by stock health</p>
                     </div>
-                    <AlertTriangle size={18} className="risk-heading-icon" />
+                    <Boxes size={18} style={{ color: 'var(--color-primary)' }} />
                   </div>
 
-                  <div className="risk-list">
-                    <div className="risk-row">
-                      <div className="risk-label">
-                        <span className="risk-indicator high" />
-                        <span>High Risk (Stockout Deficit)</span>
-                      </div>
-                      <strong className="tabular-nums" style={{ color: '#ef4444' }}>
-                        {number(riskCount('High'))} SKUs
-                      </strong>
-                    </div>
-                    <div className="risk-track">
-                      <div
-                        className="risk-fill high-fill"
-                        style={{ width: `${risks.length ? Math.min(100, (riskCount('High') / risks.length) * 100) : 0}%` }}
-                      />
-                    </div>
-
-                    <div className="risk-row">
-                      <div className="risk-label">
-                        <span className="risk-indicator medium" />
-                        <span>Medium Risk (Buffer Warning)</span>
-                      </div>
-                      <strong className="tabular-nums" style={{ color: '#f59e0b' }}>
-                        {number(riskCount('Medium'))} SKUs
-                      </strong>
-                    </div>
-                    <div className="risk-track">
-                      <div
-                        className="risk-fill medium-fill"
-                        style={{ width: `${risks.length ? Math.min(100, (riskCount('Medium') / risks.length) * 100) : 0}%` }}
-                      />
-                    </div>
-
-                    <div className="risk-row">
-                      <div className="risk-label">
-                        <span className="risk-indicator low" />
-                        <span>Low Risk (Healthy Buffer)</span>
-                      </div>
-                      <strong className="tabular-nums" style={{ color: '#10b981' }}>
-                        {number(riskCount('Low'))} SKUs
-                      </strong>
-                    </div>
-                    <div className="risk-track">
-                      <div
-                        className="risk-fill low-fill"
-                        style={{ width: `${risks.length ? Math.min(100, (riskCount('Low') / risks.length) * 100) : 0}%` }}
-                      />
-                    </div>
+                  <div style={{ width: '100%', height: 190 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={healthData}
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={50}
+                          outerRadius={75}
+                          paddingAngle={3}
+                          dataKey="value"
+                        >
+                          {healthData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Pie>
+                        <Tooltip formatter={(v) => [`${v} SKUs`, 'Count']} />
+                      </PieChart>
+                    </ResponsiveContainer>
                   </div>
 
-                  <div className="risk-footer">
-                    <span>Central Warehouse Purchase Required:</span>
-                    <strong>{number(summary?.external_replenishment_units)} units</strong>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', textAlign: 'center', marginTop: '6px', paddingTop: '10px', borderTop: '1px solid var(--color-border-light)' }}>
+                    <div>
+                      <div style={{ fontSize: '11px', color: 'var(--color-healthy)', fontWeight: 600 }}>Healthy</div>
+                      <div style={{ fontSize: '15px', fontWeight: 700 }}>{healthData[0].value}</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '11px', color: '#1565C0', fontWeight: 600 }}>Overstocked</div>
+                      <div style={{ fontSize: '15px', fontWeight: 700 }}>{healthData[1].value}</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '11px', color: 'var(--color-shortage)', fontWeight: 600 }}>Understocked</div>
+                      <div style={{ fontSize: '15px', fontWeight: 700 }}>{healthData[2].value}</div>
+                    </div>
                   </div>
                 </div>
               </section>
 
-              {/* Lower Grid: Store Summary & Priority Alerts */}
+              {/* Lower Grid: 4-Store Performance Summary & Priority Alerts */}
               <section className="dashboard-grid lower-grid">
-                {/* Store Inventory Position Table */}
                 <div className="panel">
                   <div className="panel-heading">
                     <div>
-                      <h2>Store Logistics Position</h2>
-                      <p>Inventory on-hand and scheduled transfer flows</p>
+                      <h2>4-Store Logistics & Transfer Position</h2>
+                      <p>Inventory on-hand and scheduled inter-store transfer balance</p>
                     </div>
-                    <span className="panel-tag">LIVE NODES</span>
+                    <span className="panel-tag">CA_1 · CA_2 · TX_1 · WI_1</span>
                   </div>
 
                   <div className="table-wrapper">
@@ -845,26 +817,26 @@ function App() {
                           <tr key={s.store_id}>
                             <td>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <Store size={15} className="text-indigo-600" />
+                                <Store size={15} style={{ color: 'var(--color-primary)' }} />
                                 <strong>{s.store_id}</strong>
                               </div>
                             </td>
                             <td className="tabular-nums">
-                              {number(s.on_hand_units ?? s.on_hand_stock ?? s.total_inventory_units)} units
+                              {number(s.on_hand_units)} units
                             </td>
                             <td className="tabular-nums positive">
                               +{number(s.incoming_units)} units
                             </td>
-                            <td className="tabular-nums" style={{ color: '#64748b' }}>
+                            <td className="tabular-nums" style={{ color: 'var(--color-text-secondary)' }}>
                               -{number(s.outgoing_units)} units
                             </td>
                             <td>
                               <button
                                 type="button"
                                 className="action-btn"
-                                onClick={() => setActivePage('Inventory Intelligence')}
+                                onClick={() => setActivePage('Inventory Optimization')}
                               >
-                                View Stock
+                                View Transfers
                               </button>
                             </td>
                           </tr>
@@ -874,14 +846,14 @@ function App() {
                   </div>
                 </div>
 
-                {/* Priority Inventory Alerts */}
+                {/* Priority Stockout Alerts */}
                 <div className="panel">
                   <div className="panel-heading">
                     <div>
-                      <h2>Priority Inventory Alerts</h2>
-                      <p>SKUs exhibiting the largest risk gaps</p>
+                      <h2>Priority Stockout Risks</h2>
+                      <p>Top SKU deficits requiring replenishment</p>
                     </div>
-                    <span className="panel-tag">TOP DEFICITS</span>
+                    <AlertTriangle size={18} style={{ color: 'var(--color-shortage)' }} />
                   </div>
 
                   <div className="alert-list">
@@ -898,7 +870,7 @@ function App() {
                         </div>
                         <div className="alert-gap">
                           <strong>{number(item.risk_gap)}</strong>
-                          <span>unit gap</span>
+                          <span>unit deficit</span>
                         </div>
                         <button
                           type="button"
@@ -911,35 +883,46 @@ function App() {
                         </button>
                       </div>
                     ))}
-
-                    {risks.length === 0 && (
-                      <div className="empty-state">No inventory alerts found. All SKUs within safety thresholds.</div>
-                    )}
                   </div>
                 </div>
               </section>
 
               {/* Bottom Operational Summary */}
-              <section className="bottom-summary">
-                <div>
-                  <Truck size={18} />
-                  <span>Transfer Optimization Pool:</span>
-                  <strong>{number(summary?.total_transfer_units)} units ready for dispatch</strong>
+              <section
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  background: 'var(--color-surface)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: '16px 22px',
+                  marginTop: '4px',
+                  fontSize: '12.5px',
+                  color: 'var(--color-text-secondary)'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Truck size={18} style={{ color: 'var(--color-primary)' }} />
+                  <span>OR-Tools Transfer Pool:</span>
+                  <strong style={{ color: 'var(--color-heading)' }}>
+                    {number(summary?.total_transfer_units)} units scheduled across 4 stores
+                  </strong>
                 </div>
 
-                <div>
-                  <CalendarDays size={18} />
-                  <span>Last Engine Synchronize:</span>
-                  <strong>{lastUpdated || 'Synchronized'}</strong>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <CalendarDays size={18} style={{ color: 'var(--color-primary)' }} />
+                  <span>Last Engine Synchronization:</span>
+                  <strong style={{ color: 'var(--color-heading)' }}>{lastUpdated || 'Active'}</strong>
                 </div>
               </section>
             </>
           )}
 
-          {/* SaaS Footer */}
-          <footer className="footer">
-            <span>RetailPulse · Enterprise Multi-Store Demand & Inventory Intelligence Platform</span>
-            <span>FastAPI Backend · XGBoost Machine Learning · Google OR-Tools MIP</span>
+          {/* Footer */}
+          <footer className="footer" style={{ marginTop: '24px' }}>
+            <span>RetailPulse · Multi-Store Demand Forecasting & Inventory Optimization Platform</span>
+            <span>FastAPI Backend · XGBoost Regression · Google OR-Tools CP-SAT</span>
           </footer>
         </div>
       </main>
@@ -949,7 +932,7 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowSettings(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h3>System Settings & Diagnostic Information</h3>
+              <h3>System Settings & Platform Diagnostics</h3>
               <button
                 type="button"
                 className="modal-close"
@@ -961,7 +944,7 @@ function App() {
             <div className="modal-body">
               <div style={{ display: 'grid', gap: '14px' }}>
                 <div style={{ padding: '12px', background: 'var(--color-bg)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 600 }}>API BASE URL</div>
+                  <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 600 }}>API BACKEND ENDPOINT</div>
                   <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-heading)', marginTop: '4px' }}>
                     {import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api'}
                   </div>
@@ -975,9 +958,9 @@ function App() {
                 </div>
 
                 <div style={{ padding: '12px', background: 'var(--color-bg)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
-                  <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 600 }}>OPTIMIZATION ALGORITHM</div>
+                  <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 600 }}>OPTIMIZATION & FORECASTING ENGINES</div>
                   <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-heading)', marginTop: '4px' }}>
-                    XGBoost 7-Day Horizon + Google OR-Tools Mixed-Integer Linear Program
+                    Google OR-Tools CP-SAT Solver v9.15 + XGBoost Regressor (4 Stores)
                   </div>
                 </div>
 
@@ -987,7 +970,7 @@ function App() {
                     className="primary-button"
                     onClick={() => {
                       setShowSettings(false)
-                      triggerToast('Settings diagnostics verified.', 'info')
+                      triggerToast('Platform diagnostics verified.', 'info')
                     }}
                   >
                     Done
@@ -1001,5 +984,3 @@ function App() {
     </div>
   )
 }
-
-export default App

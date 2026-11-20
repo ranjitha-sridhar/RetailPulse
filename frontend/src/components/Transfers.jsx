@@ -131,7 +131,7 @@ function Transfers() {
   // Store-to-store matrix calculation
   const transferMatrix = useMemo(() => {
     const matrix = {}
-    const stores = ['CA_1', 'TX_1', 'WI_1']
+    const stores = ['CA_1', 'CA_2', 'TX_1', 'WI_1']
     stores.forEach(from => {
       matrix[from] = {}
       stores.forEach(to => {
@@ -189,7 +189,7 @@ function Transfers() {
     showToast('External replenishment manifest exported to CSV.')
   }
 
-  const stores = ['CA_1', 'TX_1', 'WI_1']
+  const stores = ['CA_1', 'CA_2', 'TX_1', 'WI_1']
 
   return (
     <div className="transfers-page">
@@ -569,6 +569,7 @@ function Transfers() {
                     <tr>
                       <th>From (Donor) \ To (Recipient)</th>
                       <th>CA_1</th>
+                      <th>CA_2</th>
                       <th>TX_1</th>
                       <th>WI_1</th>
                       <th>Total Outgoing</th>
